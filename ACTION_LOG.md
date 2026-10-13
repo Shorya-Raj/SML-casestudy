@@ -365,3 +365,11 @@ Check the spelling of the name, or if a path was included, verify that the path 
 - Organized nine original course documents under course_materials/ and two historical notes under notes/ without modifying their contents. Added folder guides, input provenance/creator attribution, and repository links in standard Markdown. Existing historical file locations in older log entries describe where files were at that time.
 - Included the prepared CSVs, code, reports, dated evidence, draft, logs, literature material, and course references in the upload scope. Virtual environments, cache files, credential/config folders, and temporary files are excluded. No blanket license is assigned to third-party data or course documents.
 - Added Git attributes protecting raw CSVs and dated archives from newline normalization so their recorded byte hashes remain valid after checkout. Publication and remote verification will be recorded after the initial upload.
+
+### 2026-10-14 02:42:26 IST — GitHub publication verified
+
+- Uploaded all 88 project files to the private repository [Shorya-Raj/SML-casestudy](https://github.com/Shorya-Raj/SML-casestudy) on main. Initial project commit: 942333d9ab22398739570e83d758130b5e21cb08.
+- Verified the remote main reference equals the local project commit. Fetched README.md through the connected GitHub service and confirmed its Markdown content, report links, relative chart image, setup commands, scope, and limitations are present remotely. Repository metadata still reports private visibility.
+- Before upload, compared Git's staged bytes against all 47 dated manifest entries and both raw CSVs; every digest matched. This verifies the archive and raw-data newline protections. Standard current Markdown/code files use Git-compatible text formatting.
+- Local working tree was clean after the initial upload. This publication record is being committed as a follow-up documentation update; no source code, data, or model outputs changed during publication.
+- Submission work remains: final cover details, instructor acceptance of the literature selection, code/output screenshots and final course-format report, plus Experiment 13 regression.
