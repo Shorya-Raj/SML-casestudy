@@ -1,0 +1,13 @@
+# Keep local virtual environments and Python cache files out of the student project.
+.venv/
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+.aws/
+.codex/
+.agents/
+.DS_Store
+Thumbs.db
+*.tmp

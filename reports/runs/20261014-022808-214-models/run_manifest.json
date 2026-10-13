@@ -1,0 +1,72 @@
+{
+  "task": "models",
+  "status": "success",
+  "started_ist": "2026-10-14T02:28:08.2146166+05:30",
+  "finished_ist": "2026-10-14T02:30:06.8385916+05:30",
+  "python_command": "C:\\Users\\shory\\AppData\\Local\\Temp\\sml-revision-c2eb87323244431b94ec84c05c37ad14\\Scripts\\python.exe",
+  "runtime": {
+    "joblib": "1.6.0",
+    "matplotlib": "3.11.2",
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "python": "3.12.10",
+    "scikit_learn": "1.9.1",
+    "scipy": "1.18.1",
+    "threadpoolctl": "3.7.0"
+  },
+  "failure": "",
+  "files": [
+    {
+      "path": "execution_notes.log",
+      "sha256": "4469AFD4BECE6F3653FA5E437749FFFED37105DF7FA802A1B637AE039C3FF8DA"
+    },
+    {
+      "path": "unsw_nb15_confusion_matrices.png",
+      "sha256": "462681303A25788A7588A490C2E6C196A96728B40DCA2D06E442ADF56FEBEEC8"
+    },
+    {
+      "path": "unsw_nb15_model_comparison.png",
+      "sha256": "D59D32CFE5426B44B61004FF5A953B8DB84DC7EABD0F5731239AFEF9BC20A6E3"
+    },
+    {
+      "path": "unsw_nb15_model_metrics.csv",
+      "sha256": "C4C5727AE04EAEF8AF1CD9EEF9011830C11C4E933ADF3F15B25405BCC6A60FEF"
+    },
+    {
+      "path": "unsw_nb15_model_results.json",
+      "sha256": "DADCD66167F07345855104470C5823645665243D7AA3DC36CC4FA8C53E481A3B"
+    },
+    {
+      "path": "unsw_nb15_model_results.md",
+      "sha256": "01AC7F1278EF25A7FEA8B19F2E137211EAE7B93EAAF57C4694CBCCD4A6D53DC7"
+    },
+    {
+      "path": "source\\audit_unsw_nb15.py",
+      "sha256": "8A9AB171BE622605E21B2680A6A74C04E4A976138B55E487215280F6CFBAC8F4"
+    },
+    {
+      "path": "source\\plot_unsw_nb15_results.py",
+      "sha256": "57F9099F9E77589BC4BD39FBC820C134A77B10C53C01E0F12471B8D125307764"
+    },
+    {
+      "path": "source\\requirements.txt",
+      "sha256": "3E9F7918AFDE352A6E4020E16E51407E8C7AE0DA11F8EC5E3E6C05C0CF6F7AA8"
+    },
+    {
+      "path": "source\\run_audit.ps1",
+      "sha256": "5AF138EC670FA73CE372A792AFFDB339B8C4EA24E5BDAB79B5E64A5DA876979E"
+    },
+    {
+      "path": "source\\run_models.ps1",
+      "sha256": "EF9D7B45F6D1E9021518C5A385C5766FDF750886A2ED37E8082F872C85FB02F7"
+    },
+    {
+      "path": "source\\run_project.ps1",
+      "sha256": "26F6A42A268AF332E2E36C649E0A3AF4E9483DF6F0F611298D0C91BAF94AA075"
+    },
+    {
+      "path": "source\\train_unsw_nb15_models.py",
+      "sha256": "21DABF416D5E08A4D962E155E575B4D6DDD10AF59FEEF9D6B87C11C340D008B8"
+    }
+  ]
+}

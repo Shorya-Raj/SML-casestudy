@@ -1,0 +1,540 @@
+{
+  "metadata": {
+    "categorical_features": [
+      "proto",
+      "service",
+      "state"
+    ],
+    "excluded_predictor_columns": [
+      "attack_cat",
+      "id",
+      "label"
+    ],
+    "feature_count": 42,
+    "fit_notes": {
+      "dummy_prior": {
+        "final_fit_warnings": [],
+        "full_training_fit_seconds": 0.004,
+        "validation_fit_seconds": 0.05,
+        "validation_warnings": []
+      },
+      "hist_gradient_boosting": {
+        "final_fit_warnings": [],
+        "full_training_fit_seconds": 16.748,
+        "validation_fit_seconds": 14.02,
+        "validation_warnings": []
+      },
+      "logistic_regression": {
+        "final_fit_warnings": [],
+        "full_training_fit_seconds": 4.698,
+        "validation_fit_seconds": 3.673,
+        "validation_warnings": []
+      },
+      "random_forest": {
+        "final_fit_warnings": [],
+        "full_training_fit_seconds": 26.816,
+        "validation_fit_seconds": 17.461,
+        "validation_warnings": []
+      }
+    },
+    "inputs": {
+      "testing": {
+        "bytes": 15380800,
+        "file": "UNSW_NB15_testing-set.csv",
+        "rows": 82332,
+        "sha256": "734FE6642EDF758F7C94D7D9149426B49D202FE8E7BF0BEF47392489C3C0A559"
+      },
+      "training": {
+        "bytes": 32293018,
+        "file": "UNSW_NB15_training-set.csv",
+        "rows": 175341,
+        "sha256": "BEC7DD5EC88DC2A0CCC7A07879D338395ED7421750F675FD0339E07DFE0648FA"
+      }
+    },
+    "model_selection": "Predefined fixed configurations; no hyperparameter search",
+    "numeric_features": [
+      "dur",
+      "spkts",
+      "dpkts",
+      "sbytes",
+      "dbytes",
+      "rate",
+      "sttl",
+      "dttl",
+      "sload",
+      "dload",
+      "sloss",
+      "dloss",
+      "sinpkt",
+      "dinpkt",
+      "sjit",
+      "djit",
+      "swin",
+      "stcpb",
+      "dtcpb",
+      "dwin",
+      "tcprtt",
+      "synack",
+      "ackdat",
+      "smean",
+      "dmean",
+      "trans_depth",
+      "response_body_len",
+      "ct_srv_src",
+      "ct_state_ttl",
+      "ct_dst_ltm",
+      "ct_src_dport_ltm",
+      "ct_dst_sport_ltm",
+      "ct_dst_src_ltm",
+      "is_ftp_login",
+      "ct_ftp_cmd",
+      "ct_flw_http_mthd",
+      "ct_src_ltm",
+      "ct_srv_dst",
+      "is_sm_ips_ports"
+    ],
+    "preprocessing": {
+      "categorical_encoding": "OneHotEncoder(handle_unknown='ignore', dtype=float32)",
+      "fitting_boundary": "current training partition only",
+      "missing_values": "No imputation; stop on missing/invalid/infinite numeric or empty categorical fields",
+      "numeric_scaling": "StandardScaler for Logistic Regression only",
+      "output_format": "dense for histogram boosting; sparse permitted for Logistic Regression and Random Forest",
+      "resampling": "none"
+    },
+    "processing_log": [
+      "1. Re-verified staged training/testing file sizes, SHA-256 digests, and row counts before modeling.",
+      "2. Read source CSVs as strings with NA coercion disabled; did not alter or rewrite raw files.",
+      "3. Constructed y from label and X from the 42 flow predictors only; removed id and attack_cat before preprocessing.",
+      "4. Parsed the 39 numeric predictors with numeric coercion and an explicit invalid-value check; retained proto, service, and state as categories, including service '-'.",
+      "5. Hashed parsed X vectors only to create feature groups; group hashes were never input to any estimator.",
+      "6. Selected the first fixed-seed StratifiedGroupKFold split; verified zero feature groups crossed fit/validation.",
+      "7. Verified complete/finite numeric and nonempty categorical fields; applied no imputation. Inside training-only pipelines, standardized numeric fields for Logistic Regression and one-hot encoded categories with unknown-category ignore; fit the predefined Dummy, Logistic Regression, Random Forest, and histogram boosting models, with no resampling or hyperparameter tuning.",
+      "8. Recorded validation metrics, then refit each unchanged model configuration on all official training rows and evaluated the official test rows.",
+      "9. Calculated a secondary metric set only on test rows whose predictor vectors were absent from the full training split.",
+      "10. Generated result JSON, Markdown, Matplotlib PNG charts, and a tidy CSV using derived outputs only."
+    ],
+    "run_timestamp_local": "2026-10-14T02:30:04+05:30",
+    "runtime": {
+      "joblib": "1.6.0",
+      "matplotlib": "3.11.2",
+      "numpy": "2.5.3",
+      "pandas": "3.0.6",
+      "python": "3.12.10",
+      "scikit_learn": "1.9.1",
+      "scipy": "1.18.1",
+      "threadpoolctl": "3.7.0"
+    },
+    "seed": 42,
+    "test_rows": 82332,
+    "test_seen_predictor_rows": 8541,
+    "test_unseen_predictor_rows": 73791,
+    "validation": {
+      "fit_class_counts": {
+        "0": 44800,
+        "1": 95474
+      },
+      "fit_rows": 140274,
+      "group_overlap_count": 0,
+      "method": "first fold from StratifiedGroupKFold(n_splits=5, shuffle=True, random_state=42), groups=hash of parsed 42 predictor values",
+      "unique_fit_groups": 80821,
+      "unique_validation_groups": 20219,
+      "validation_class_counts": {
+        "0": 11200,
+        "1": 23867
+      },
+      "validation_rows": 35067
+    }
+  },
+  "models": {
+    "dummy_prior": {
+      "classifier_parameters": {
+        "constant": null,
+        "random_state": null,
+        "strategy": "prior"
+      },
+      "metrics": {
+        "test_official": {
+          "accuracy": 0.5506000097167566,
+          "attack_f1": 0.710176713873919,
+          "attack_precision": 0.5506000097167566,
+          "attack_recall": 1.0,
+          "balanced_accuracy": 0.5,
+          "confusion_matrix_labels_0_then_1": [
+            [
+              0,
+              37000
+            ],
+            [
+              0,
+              45332
+            ]
+          ],
+          "macro_f1": 0.3550883569369595,
+          "normal_f1": 0.0,
+          "normal_precision": 0.0,
+          "normal_recall": 0.0,
+          "roc_auc": 0.5,
+          "rows": 82332
+        },
+        "test_unseen_predictor_vectors": {
+          "accuracy": 0.5185320703066769,
+          "attack_f1": 0.6829385831831082,
+          "attack_precision": 0.5185320703066769,
+          "attack_recall": 1.0,
+          "balanced_accuracy": 0.5,
+          "confusion_matrix_labels_0_then_1": [
+            [
+              0,
+              35528
+            ],
+            [
+              0,
+              38263
+            ]
+          ],
+          "macro_f1": 0.3414692915915541,
+          "normal_f1": 0.0,
+          "normal_precision": 0.0,
+          "normal_recall": 0.0,
+          "roc_auc": 0.5,
+          "rows": 73791
+        },
+        "validation": {
+          "accuracy": 0.6806114010323095,
+          "attack_f1": 0.8099569009400346,
+          "attack_precision": 0.6806114010323095,
+          "attack_recall": 1.0,
+          "balanced_accuracy": 0.5,
+          "confusion_matrix_labels_0_then_1": [
+            [
+              0,
+              11200
+            ],
+            [
+              0,
+              23867
+            ]
+          ],
+          "macro_f1": 0.4049784504700173,
+          "normal_f1": 0.0,
+          "normal_precision": 0.0,
+          "normal_recall": 0.0,
+          "roc_auc": 0.5,
+          "rows": 35067
+        }
+      },
+      "role": "prior-only reference",
+      "settings": {
+        "strategy": "training class prior"
+      }
+    },
+    "hist_gradient_boosting": {
+      "classifier_parameters": {
+        "categorical_features": "from_dtype",
+        "class_weight": "balanced",
+        "early_stopping": false,
+        "interaction_cst": null,
+        "l2_regularization": 0.1,
+        "learning_rate": 0.1,
+        "loss": "log_loss",
+        "max_bins": 255,
+        "max_depth": null,
+        "max_features": 1.0,
+        "max_iter": 100,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 20,
+        "monotonic_cst": null,
+        "n_iter_no_change": 10,
+        "random_state": 42,
+        "scoring": "loss",
+        "tol": 1e-07,
+        "validation_fraction": 0.1,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "metrics": {
+        "test_official": {
+          "accuracy": 0.9101928776174513,
+          "attack_f1": 0.9221831652949968,
+          "attack_precision": 0.8817775630962444,
+          "attack_recall": 0.9664696020471191,
+          "balanced_accuracy": 0.9038564226451812,
+          "confusion_matrix_labels_0_then_1": [
+            [
+              31126,
+              5874
+            ],
+            [
+              1520,
+              43812
+            ]
+          ],
+          "macro_f1": 0.9080088499708192,
+          "normal_f1": 0.8938345346466415,
+          "normal_precision": 0.953439931385162,
+          "normal_recall": 0.8412432432432433,
+          "roc_auc": 0.9854759685896961,
+          "rows": 82332
+        },
+        "test_unseen_predictor_vectors": {
+          "accuracy": 0.9055982436882547,
+          "attack_f1": 0.9134486357536902,
+          "attack_precision": 0.8706330972738685,
+          "attack_recall": 0.9606930977706923,
+          "balanced_accuracy": 0.903477600450309,
+          "confusion_matrix_labels_0_then_1": [
+            [
+              30066,
+              5462
+            ],
+            [
+              1504,
+              36759
+            ]
+          ],
+          "macro_f1": 0.9048151700631994,
+          "normal_f1": 0.8961817043727086,
+          "normal_precision": 0.9523598352866646,
+          "normal_recall": 0.8462621031299257,
+          "roc_auc": 0.9831333133291335,
+          "rows": 73791
+        },
+        "validation": {
+          "accuracy": 0.9493540935922662,
+          "attack_f1": 0.9621725239616613,
+          "attack_precision": 0.9785123250877269,
+          "attack_recall": 0.9463694641136297,
+          "balanced_accuracy": 0.9510418749139578,
+          "confusion_matrix_labels_0_then_1": [
+            [
+              10704,
+              496
+            ],
+            [
+              1280,
+              22587
+            ]
+          ],
+          "macro_f1": 0.9427839845481185,
+          "normal_f1": 0.9233954451345756,
+          "normal_precision": 0.8931909212283045,
+          "normal_recall": 0.9557142857142857,
+          "roc_auc": 0.9930282099012983,
+          "rows": 35067
+        }
+      },
+      "role": "boosting ensemble",
+      "settings": {
+        "class_weight": "balanced",
+        "early_stopping": false,
+        "l2_regularization": 0.1,
+        "learning_rate": 0.1,
+        "max_iter": 100,
+        "max_leaf_nodes": 31,
+        "min_samples_leaf": 20,
+        "random_state": 42
+      }
+    },
+    "logistic_regression": {
+      "classifier_parameters": {
+        "C": 1.0,
+        "class_weight": "balanced",
+        "dual": false,
+        "fit_intercept": true,
+        "intercept_scaling": 1,
+        "l1_ratio": 0.0,
+        "max_iter": 500,
+        "n_jobs": null,
+        "penalty": "deprecated",
+        "random_state": 42,
+        "solver": "lbfgs",
+        "tol": 0.0001,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "metrics": {
+        "test_official": {
+          "accuracy": 0.8353009765340329,
+          "attack_f1": 0.8615309206764153,
+          "attack_precision": 0.8020381778081983,
+          "attack_recall": 0.9305567810817965,
+          "balanced_accuracy": 0.8245756878381956,
+          "confusion_matrix_labels_0_then_1": [
+            [
+              26588,
+              10412
+            ],
+            [
+              3148,
+              42184
+            ]
+          ],
+          "macro_f1": 0.8291711184537676,
+          "normal_f1": 0.7968113162311197,
+          "normal_precision": 0.8941350551520043,
+          "normal_recall": 0.7185945945945946,
+          "roc_auc": 0.955959518483453,
+          "rows": 82332
+        },
+        "test_unseen_predictor_vectors": {
+          "accuracy": 0.8230136466506756,
+          "attack_f1": 0.8432436325227453,
+          "attack_precision": 0.7797163215022974,
+          "attack_recall": 0.91804092726655,
+          "balanced_accuracy": 0.8193559736535407,
+          "confusion_matrix_labels_0_then_1": [
+            [
+              25604,
+              9924
+            ],
+            [
+              3136,
+              35127
+            ]
+          ],
+          "macro_f1": 0.8200160404475929,
+          "normal_f1": 0.7967884483724404,
+          "normal_precision": 0.8908837856645789,
+          "normal_recall": 0.7206710200405314,
+          "roc_auc": 0.9493967190997505,
+          "rows": 73791
+        },
+        "validation": {
+          "accuracy": 0.9328428436992043,
+          "attack_f1": 0.9508176179437379,
+          "attack_precision": 0.9478680879413725,
+          "attack_recall": 0.9537855616541668,
+          "balanced_accuracy": 0.9209999236842263,
+          "confusion_matrix_labels_0_then_1": [
+            [
+              9948,
+              1252
+            ],
+            [
+              1103,
+              22764
+            ]
+          ],
+          "macro_f1": 0.9224898390379334,
+          "normal_f1": 0.8941620601321288,
+          "normal_precision": 0.9001900280517601,
+          "normal_recall": 0.8882142857142857,
+          "roc_auc": 0.9846625496052529,
+          "rows": 35067
+        }
+      },
+      "role": "linear reference classifier",
+      "settings": {
+        "C": 1.0,
+        "class_weight": "balanced",
+        "max_iter": 500,
+        "random_state": 42,
+        "solver": "lbfgs"
+      }
+    },
+    "random_forest": {
+      "classifier_parameters": {
+        "bootstrap": true,
+        "ccp_alpha": 0.0,
+        "class_weight": "balanced_subsample",
+        "criterion": "gini",
+        "max_depth": 20,
+        "max_features": "sqrt",
+        "max_leaf_nodes": null,
+        "max_samples": null,
+        "min_impurity_decrease": 0.0,
+        "min_samples_leaf": 2,
+        "min_samples_split": 2,
+        "min_weight_fraction_leaf": 0.0,
+        "monotonic_cst": null,
+        "n_estimators": 150,
+        "n_jobs": -1,
+        "oob_score": false,
+        "random_state": 42,
+        "verbose": 0,
+        "warm_start": false
+      },
+      "metrics": {
+        "test_official": {
+          "accuracy": 0.9035611912743526,
+          "attack_f1": 0.917431001851043,
+          "attack_precision": 0.8678142829037969,
+          "attack_recall": 0.9730653842760081,
+          "balanced_accuracy": 0.8957353948407067,
+          "confusion_matrix_labels_0_then_1": [
+            [
+              30281,
+              6719
+            ],
+            [
+              1221,
+              44111
+            ]
+          ],
+          "macro_f1": 0.9007609886485077,
+          "normal_f1": 0.8840909754459724,
+          "normal_precision": 0.9612405561551648,
+          "normal_recall": 0.8184054054054054,
+          "roc_auc": 0.9848235823509912,
+          "rows": 82332
+        },
+        "test_unseen_predictor_vectors": {
+          "accuracy": 0.8984971066932281,
+          "attack_f1": 0.9082175330245326,
+          "attack_precision": 0.8549938859792815,
+          "attack_recall": 0.968507435381439,
+          "balanced_accuracy": 0.8958023553849326,
+          "confusion_matrix_labels_0_then_1": [
+            [
+              29243,
+              6285
+            ],
+            [
+              1205,
+              37058
+            ]
+          ],
+          "macro_f1": 0.8973457011551667,
+          "normal_f1": 0.8864738692858009,
+          "normal_precision": 0.9604243300052548,
+          "normal_recall": 0.823097275388426,
+          "roc_auc": 0.9823481541960538,
+          "rows": 73791
+        },
+        "validation": {
+          "accuracy": 0.950494767160008,
+          "attack_f1": 0.9632499259071087,
+          "attack_precision": 0.9734713961747464,
+          "attack_recall": 0.9532408765240709,
+          "balanced_accuracy": 0.9489418668334639,
+          "confusion_matrix_labels_0_then_1": [
+            [
+              10580,
+              620
+            ],
+            [
+              1116,
+              22751
+            ]
+          ],
+          "macro_f1": 0.9437144108920589,
+          "normal_f1": 0.9241788958770091,
+          "normal_precision": 0.9045827633378933,
+          "normal_recall": 0.9446428571428571,
+          "roc_auc": 0.9929136053067895,
+          "rows": 35067
+        }
+      },
+      "role": "bagging ensemble",
+      "settings": {
+        "class_weight": "balanced_subsample",
+        "max_depth": 20,
+        "max_features": "sqrt",
+        "min_samples_leaf": 2,
+        "n_estimators": 150,
+        "n_jobs": -1,
+        "random_state": 42
+      }
+    }
+  }
+}

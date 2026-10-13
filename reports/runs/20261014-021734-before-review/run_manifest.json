@@ -1,0 +1,72 @@
+{
+  "status": "historical_snapshot",
+  "snapshot_time_ist": "2026-10-14T02:17:34.8070300+05:30",
+  "original_model_time": "2026-10-14T01:39:57+05:30",
+  "reason": "Preserved before applying the authorized review suggestions",
+  "files": [
+    {
+      "path": "unsw_nb15_audit.json",
+      "sha256": "5D6FE4B52F044AD687AAA15680ECA7675764209FE2064AC4EC9EF0F7A9C9006F"
+    },
+    {
+      "path": "unsw_nb15_confusion_matrices.png",
+      "sha256": "BBFCD7E10DE0E735E805D527773E13110BC06BAB694F6487B325DFC2C4CACBCD"
+    },
+    {
+      "path": "unsw_nb15_data_audit.md",
+      "sha256": "1EF284F68C9F8B48345B1CA3158355BC6B36642A722B9C5ABE7E0BFA651039AE"
+    },
+    {
+      "path": "unsw_nb15_model_comparison.png",
+      "sha256": "AE54AEDA232272E5F185A7A62998D84F8D2A30154B286ACFF60973D7A86BE3F6"
+    },
+    {
+      "path": "unsw_nb15_model_metrics.csv",
+      "sha256": "C4C5727AE04EAEF8AF1CD9EEF9011830C11C4E933ADF3F15B25405BCC6A60FEF"
+    },
+    {
+      "path": "unsw_nb15_model_results.json",
+      "sha256": "2B66F8F2D21F7769A940AFCA43161FF9E06D61857CF671ED59F7CB5A9DA1F72E"
+    },
+    {
+      "path": "unsw_nb15_model_results.md",
+      "sha256": "62D3E8F6578D431D74046F43599CEC413A88C3E16EE884B61170A734ABE07721"
+    },
+    {
+      "path": "source\\.gitignore",
+      "sha256": "7A11BCD8E4F90CD18111DA96EBFBBBB9CFBF34F340B516D8401E505963EEFE15"
+    },
+    {
+      "path": "source\\ACTION_LOG.md",
+      "sha256": "500B1A6139CDD8FD28A170B0E4AFE2D7572C5D090E4CBBF394970340EE54CCF3"
+    },
+    {
+      "path": "source\\audit_unsw_nb15.py",
+      "sha256": "7BCE3848925006C996AF82A79E362DEC895F8C676C9BD817191277F05F1D9060"
+    },
+    {
+      "path": "source\\LITERATURE_REVIEW_MATRIX.md",
+      "sha256": "2F107B694ADE8B7065E155C5FF9F1199CAD92E704318A20959DF6E96DDD92B35"
+    },
+    {
+      "path": "source\\plot_unsw_nb15_results.py",
+      "sha256": "0276F970C8C77A9A37260F5F41270F5799A05F322FA258254F1C6077A1B1D087"
+    },
+    {
+      "path": "source\\requirements.txt",
+      "sha256": "3E9F7918AFDE352A6E4020E16E51407E8C7AE0DA11F8EC5E3E6C05C0CF6F7AA8"
+    },
+    {
+      "path": "source\\run_audit.ps1",
+      "sha256": "E9B3F73F8B99F198E6AB424F604AAED86C747E06D4744FFCC9992CF5E4E0ED93"
+    },
+    {
+      "path": "source\\run_models.ps1",
+      "sha256": "EE9C938D9CE992DE6389053C8CDFE141CB5F5EFDD361A1DBF2FD5A6F0A5A1971"
+    },
+    {
+      "path": "source\\train_unsw_nb15_models.py",
+      "sha256": "53971A1BD4D2BB599BE346CD993DFFCD77C7F8480955B5D2BF1E71CD7FE49B74"
+    }
+  ]
+}

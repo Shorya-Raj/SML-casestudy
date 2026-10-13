@@ -1,0 +1,55 @@
+{
+  "task": "audit",
+  "status": "success",
+  "started_ist": "2026-10-14T02:27:41.7639516+05:30",
+  "finished_ist": "2026-10-14T02:28:08.1224265+05:30",
+  "python_command": "C:\\Users\\shory\\AppData\\Local\\Temp\\sml-revision-c2eb87323244431b94ec84c05c37ad14\\Scripts\\python.exe",
+  "runtime": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "python": "3.12.10"
+  },
+  "failure": "",
+  "files": [
+    {
+      "path": "execution_notes.log",
+      "sha256": "D9ACF4956F890BEE1813338E4CE5CDF8130E7DFC2BA979F86FCB209DB7D4E730"
+    },
+    {
+      "path": "unsw_nb15_audit.json",
+      "sha256": "28153C3AB44AB2291A8C929C184B4E363E504EE7A0002777E93E60ED75853FD3"
+    },
+    {
+      "path": "unsw_nb15_data_audit.md",
+      "sha256": "F5639FFB816CFA08799A7708792FED3086C89B082373E00C0894D9E830399F84"
+    },
+    {
+      "path": "source\\audit_unsw_nb15.py",
+      "sha256": "8A9AB171BE622605E21B2680A6A74C04E4A976138B55E487215280F6CFBAC8F4"
+    },
+    {
+      "path": "source\\plot_unsw_nb15_results.py",
+      "sha256": "57F9099F9E77589BC4BD39FBC820C134A77B10C53C01E0F12471B8D125307764"
+    },
+    {
+      "path": "source\\requirements.txt",
+      "sha256": "3E9F7918AFDE352A6E4020E16E51407E8C7AE0DA11F8EC5E3E6C05C0CF6F7AA8"
+    },
+    {
+      "path": "source\\run_audit.ps1",
+      "sha256": "5AF138EC670FA73CE372A792AFFDB339B8C4EA24E5BDAB79B5E64A5DA876979E"
+    },
+    {
+      "path": "source\\run_models.ps1",
+      "sha256": "EF9D7B45F6D1E9021518C5A385C5766FDF750886A2ED37E8082F872C85FB02F7"
+    },
+    {
+      "path": "source\\run_project.ps1",
+      "sha256": "26F6A42A268AF332E2E36C649E0A3AF4E9483DF6F0F611298D0C91BAF94AA075"
+    },
+    {
+      "path": "source\\train_unsw_nb15_models.py",
+      "sha256": "21DABF416D5E08A4D962E155E575B4D6DDD10AF59FEEF9D6B87C11C340D008B8"
+    }
+  ]
+}

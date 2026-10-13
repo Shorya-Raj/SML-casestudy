@@ -1,0 +1,15 @@
+# Keep source and documentation readable with consistent line endings.
+* text=auto
+*.py text eol=lf
+*.ps1 text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
+*.png binary
+*.pdf binary
+*.docx binary
+
+# Raw acquisition hashes and dated archive manifests refer to exact bytes.
+# Do not normalize these files when checking out the project on Windows.
+data/raw/*.csv -text
+reports/runs/** -text

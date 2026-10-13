@@ -1,0 +1,21 @@
+Task: models; started IST: 2026-10-14T02:28:08.2146166+05:30
+Python command: C:\Users\shory\AppData\Local\Temp\sml-revision-c2eb87323244431b94ec84c05c37ad14\Scripts\python.exe
+1. Re-verified staged training/testing file sizes, SHA-256 digests, and row counts before modeling.
+2. Read source CSVs as strings with NA coercion disabled; did not alter or rewrite raw files.
+3. Constructed y from label and X from the 42 flow predictors only; removed id and attack_cat before preprocessing.
+4. Parsed the 39 numeric predictors with numeric coercion and an explicit invalid-value check; retained proto, service, and state as categories, including service '-'.
+5. Hashed parsed X vectors only to create feature groups; group hashes were never input to any estimator.
+6. Selected the first fixed-seed StratifiedGroupKFold split; verified zero feature groups crossed fit/validation.
+7. Verified complete/finite numeric and nonempty categorical fields; applied no imputation. Inside training-only pipelines, standardized numeric fields for Logistic Regression and one-hot encoded categories with unknown-category ignore; fit the predefined Dummy, Logistic Regression, Random Forest, and histogram boosting models, with no resampling or hyperparameter tuning.
+8. Recorded validation metrics, then refit each unchanged model configuration on all official training rows and evaluated the official test rows.
+9. Calculated a secondary metric set only on test rows whose predictor vectors were absent from the full training split.
+10. Generated result JSON, Markdown, Matplotlib PNG charts, and a tidy CSV using derived outputs only.
+Input testing: 82332 rows; 15380800 bytes; SHA-256 734FE6642EDF758F7C94D7D9149426B49D202FE8E7BF0BEF47392489C3C0A559
+Input training: 175341 rows; 32293018 bytes; SHA-256 BEC7DD5EC88DC2A0CCC7A07879D338395ED7421750F675FD0339E07DFE0648FA
+dummy_prior: official-test accuracy=0.5506, macro-F1=0.3551, attack recall=1.0000; fixed settings={"strategy":"training class prior"}
+hist_gradient_boosting: official-test accuracy=0.9102, macro-F1=0.9080, attack recall=0.9665; fixed settings={"class_weight":"balanced","early_stopping":false,"l2_regularization":0.1,"learning_rate":0.1,"max_iter":100,"max_leaf_nodes":31,"min_samples_leaf":20,"random_state":42}
+logistic_regression: official-test accuracy=0.8353, macro-F1=0.8292, attack recall=0.9306; fixed settings={"C":1.0,"class_weight":"balanced","max_iter":500,"random_state":42,"solver":"lbfgs"}
+random_forest: official-test accuracy=0.9036, macro-F1=0.9008, attack recall=0.9731; fixed settings={"class_weight":"balanced_subsample","max_depth":20,"max_features":"sqrt","min_samples_leaf":2,"n_estimators":150,"n_jobs":-1,"random_state":42}
+Validation group overlap: 0
+Full effective classifier parameters, preprocessing policy, fit warnings, timings, and runtime versions are in the archived JSON.
+Finished IST: 2026-10-14T02:30:06.8385916+05:30; status: success

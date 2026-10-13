@@ -1,0 +1,12 @@
+Task: audit; started IST: 2026-10-14T02:27:41.7639516+05:30
+Python command: C:\Users\shory\AppData\Local\Temp\sml-revision-c2eb87323244431b94ec84c05c37ad14\Scripts\python.exe
+1. Read-only source audit: opened the prepared CSVs under data/raw; source bytes were not changed.
+2. Integrity: computed SHA-256 in 1 MiB chunks and compared digest, byte size, and row count to the acquisition record.
+3. Parsing: read as strings with keep_default_na=False and na_filter=False to preserve empty cells and literal text.
+4. Profiling: counted empty/whitespace/blank-like cells, distinct and frequent values, and numeric ranges/quantiles; numeric coercion was temporary and diagnostic only.
+5. Target audit: counted label values and cross-tabulated attack_cat against label; label is y and attack_cat is excluded as target-derived.
+6. Split screen: omitted id, label, and attack_cat from candidate predictors; hashed full rows and predictor-only rows to screen overlap.
+7. Reporting: generated derived JSON and Markdown outputs; this audit did not train a model.
+Input testing: 82332 rows; 15380800 bytes; SHA-256 734FE6642EDF758F7C94D7D9149426B49D202FE8E7BF0BEF47392489C3C0A559
+Input training: 175341 rows; 32293018 bytes; SHA-256 BEC7DD5EC88DC2A0CCC7A07879D338395ED7421750F675FD0339E07DFE0648FA
+Finished IST: 2026-10-14T02:28:08.1224265+05:30; status: success

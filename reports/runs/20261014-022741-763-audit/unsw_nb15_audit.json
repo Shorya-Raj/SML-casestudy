@@ -1,0 +1,4429 @@
+{
+  "audit_timestamp_local": "2026-10-14T02:28:07+05:30",
+  "audit_version": 1,
+  "cross_split_checks": {
+    "distinct_feature_hashes_shared": 1302,
+    "distinct_full_row_hashes_shared": 0,
+    "feature_matches_in_test_ignoring_id_target_and_attack_cat": 8541,
+    "full_row_matches_in_test": 0,
+    "hash_method": "pandas hash_pandas_object over source string fields; interpreted as a duplicate-screening check",
+    "id_values_shared_between_splits": 82332,
+    "test_rows_with_same_predictors_but_conflicting_label_in_training": 296
+  },
+  "duplicate_aware_validation": {
+    "class_balance": "use fixed-seed group-aware stratification if available and report resulting class counts because repeated groups constrain exact stratification",
+    "official_test": "keep the official test split untouched for final evaluation after model selection",
+    "secondary_test_slice": "report a secondary result for test rows whose predictor-vector hash was not observed in the full official training split",
+    "validation_partition": "split official training rows by groups formed from the 42 predictor values; keep each repeated predictor vector on one side only"
+  },
+  "integrity_and_scope_checks": {
+    "all_hashes_match_expected": true,
+    "all_row_counts_match_expected": true,
+    "all_sizes_match_expected": true,
+    "attack_category_label_conflicts_by_split": {
+      "testing": {},
+      "training": {}
+    },
+    "attack_category_mapping_is_deterministic_across_splits": true,
+    "label_values_only_0_or_1": true,
+    "same_train_test_schema": true
+  },
+  "processing_log": [
+    "1. Read-only source audit: opened the prepared CSVs under data/raw; source bytes were not changed.",
+    "2. Integrity: computed SHA-256 in 1 MiB chunks and compared digest, byte size, and row count to the acquisition record.",
+    "3. Parsing: read as strings with keep_default_na=False and na_filter=False to preserve empty cells and literal text.",
+    "4. Profiling: counted empty/whitespace/blank-like cells, distinct and frequent values, and numeric ranges/quantiles; numeric coercion was temporary and diagnostic only.",
+    "5. Target audit: counted label values and cross-tabulated attack_cat against label; label is y and attack_cat is excluded as target-derived.",
+    "6. Split screen: omitted id, label, and attack_cat from candidate predictors; hashed full rows and predictor-only rows to screen overlap.",
+    "7. Reporting: generated derived JSON and Markdown outputs; this audit did not train a model."
+  ],
+  "runtime": {
+    "numpy": "2.5.3",
+    "pandas": "3.0.6",
+    "python": "3.12.10"
+  },
+  "schema": {
+    "categorical_predictors": [
+      "proto",
+      "service",
+      "state"
+    ],
+    "column_count": 45,
+    "numeric_candidate_predictors": [
+      "dur",
+      "spkts",
+      "dpkts",
+      "sbytes",
+      "dbytes",
+      "rate",
+      "sttl",
+      "dttl",
+      "sload",
+      "dload",
+      "sloss",
+      "dloss",
+      "sinpkt",
+      "dinpkt",
+      "sjit",
+      "djit",
+      "swin",
+      "stcpb",
+      "dtcpb",
+      "dwin",
+      "tcprtt",
+      "synack",
+      "ackdat",
+      "smean",
+      "dmean",
+      "trans_depth",
+      "response_body_len",
+      "ct_srv_src",
+      "ct_state_ttl",
+      "ct_dst_ltm",
+      "ct_src_dport_ltm",
+      "ct_dst_sport_ltm",
+      "ct_dst_src_ltm",
+      "is_ftp_login",
+      "ct_ftp_cmd",
+      "ct_flw_http_mthd",
+      "ct_src_ltm",
+      "ct_srv_dst",
+      "is_sm_ips_ports"
+    ],
+    "predictor_columns": [
+      "dur",
+      "proto",
+      "service",
+      "state",
+      "spkts",
+      "dpkts",
+      "sbytes",
+      "dbytes",
+      "rate",
+      "sttl",
+      "dttl",
+      "sload",
+      "dload",
+      "sloss",
+      "dloss",
+      "sinpkt",
+      "dinpkt",
+      "sjit",
+      "djit",
+      "swin",
+      "stcpb",
+      "dtcpb",
+      "dwin",
+      "tcprtt",
+      "synack",
+      "ackdat",
+      "smean",
+      "dmean",
+      "trans_depth",
+      "response_body_len",
+      "ct_srv_src",
+      "ct_state_ttl",
+      "ct_dst_ltm",
+      "ct_src_dport_ltm",
+      "ct_dst_sport_ltm",
+      "ct_dst_src_ltm",
+      "is_ftp_login",
+      "ct_ftp_cmd",
+      "ct_flw_http_mthd",
+      "ct_src_ltm",
+      "ct_srv_dst",
+      "is_sm_ips_ports"
+    ],
+    "predictor_count_after_exclusions": 42,
+    "same_train_test_column_order": true,
+    "same_train_test_columns": true,
+    "test_only_columns": [],
+    "train_only_columns": []
+  },
+  "source_and_scope": {
+    "categorical_predictors_expected": [
+      "proto",
+      "service",
+      "state"
+    ],
+    "feature_grain": "one prepared dataset row, intended to represent one network flow record",
+    "feature_predictors": [
+      "dur",
+      "proto",
+      "service",
+      "state",
+      "spkts",
+      "dpkts",
+      "sbytes",
+      "dbytes",
+      "rate",
+      "sttl",
+      "dttl",
+      "sload",
+      "dload",
+      "sloss",
+      "dloss",
+      "sinpkt",
+      "dinpkt",
+      "sjit",
+      "djit",
+      "swin",
+      "stcpb",
+      "dtcpb",
+      "dwin",
+      "tcprtt",
+      "synack",
+      "ackdat",
+      "smean",
+      "dmean",
+      "trans_depth",
+      "response_body_len",
+      "ct_srv_src",
+      "ct_state_ttl",
+      "ct_dst_ltm",
+      "ct_src_dport_ltm",
+      "ct_dst_sport_ltm",
+      "ct_dst_src_ltm",
+      "is_ftp_login",
+      "ct_ftp_cmd",
+      "ct_flw_http_mthd",
+      "ct_src_ltm",
+      "ct_srv_dst",
+      "is_sm_ips_ports"
+    ],
+    "planned_exclusions_from_predictors": [
+      "attack_cat",
+      "id",
+      "label"
+    ],
+    "positive_class": "1 = attack",
+    "raw_files_modified": false,
+    "raw_packet_captures_in_scope": false,
+    "source_as_recorded": "Official UNSW shared OneDrive folder: CSV Files/Training and Testing Sets",
+    "target": "label"
+  },
+  "splits": {
+    "testing": {
+      "actual_bytes": 15380800,
+      "attack_label_counts": {
+        "Analysis": {
+          "1": 677
+        },
+        "Backdoor": {
+          "1": 583
+        },
+        "DoS": {
+          "1": 4089
+        },
+        "Exploits": {
+          "1": 11132
+        },
+        "Fuzzers": {
+          "1": 6062
+        },
+        "Generic": {
+          "1": 18871
+        },
+        "Normal": {
+          "0": 37000
+        },
+        "Reconnaissance": {
+          "1": 3496
+        },
+        "Shellcode": {
+          "1": 378
+        },
+        "Worms": {
+          "1": 44
+        }
+      },
+      "attack_to_label_values": {
+        "Analysis": [
+          "1"
+        ],
+        "Backdoor": [
+          "1"
+        ],
+        "DoS": [
+          "1"
+        ],
+        "Exploits": [
+          "1"
+        ],
+        "Fuzzers": [
+          "1"
+        ],
+        "Generic": [
+          "1"
+        ],
+        "Normal": [
+          "0"
+        ],
+        "Reconnaissance": [
+          "1"
+        ],
+        "Shellcode": [
+          "1"
+        ],
+        "Worms": [
+          "1"
+        ]
+      },
+      "blank_cell_count": 0,
+      "column_names": [
+        "id",
+        "dur",
+        "proto",
+        "service",
+        "state",
+        "spkts",
+        "dpkts",
+        "sbytes",
+        "dbytes",
+        "rate",
+        "sttl",
+        "dttl",
+        "sload",
+        "dload",
+        "sloss",
+        "dloss",
+        "sinpkt",
+        "dinpkt",
+        "sjit",
+        "djit",
+        "swin",
+        "stcpb",
+        "dtcpb",
+        "dwin",
+        "tcprtt",
+        "synack",
+        "ackdat",
+        "smean",
+        "dmean",
+        "trans_depth",
+        "response_body_len",
+        "ct_srv_src",
+        "ct_state_ttl",
+        "ct_dst_ltm",
+        "ct_src_dport_ltm",
+        "ct_dst_sport_ltm",
+        "ct_dst_src_ltm",
+        "is_ftp_login",
+        "ct_ftp_cmd",
+        "ct_flw_http_mthd",
+        "ct_src_ltm",
+        "ct_srv_dst",
+        "is_sm_ips_ports",
+        "attack_cat",
+        "label"
+      ],
+      "column_profile": {
+        "ackdat": {
+          "blank_like_token_count": 0,
+          "distinct_count": 24020,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 2.928778,
+            "mean": 0.0266691152285867,
+            "median": 8e-05,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 0.04881625,
+            "p95": 0.1048909,
+            "p99": 0.17393668000000018,
+            "std": 0.055093538334030516,
+            "zero_count": 41160
+          },
+          "top_values": [
+            {
+              "count": 41160,
+              "value": "0"
+            },
+            {
+              "count": 487,
+              "value": "0.000134"
+            },
+            {
+              "count": 471,
+              "value": "0.000133"
+            },
+            {
+              "count": 462,
+              "value": "0.000135"
+            },
+            {
+              "count": 398,
+              "value": "0.000136"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "attack_cat": {
+          "blank_like_token_count": 0,
+          "distinct_count": 10,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "top_values": [
+            {
+              "count": 37000,
+              "value": "Normal"
+            },
+            {
+              "count": 18871,
+              "value": "Generic"
+            },
+            {
+              "count": 11132,
+              "value": "Exploits"
+            },
+            {
+              "count": 6062,
+              "value": "Fuzzers"
+            },
+            {
+              "count": 4089,
+              "value": "DoS"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_dst_ltm": {
+          "blank_like_token_count": 0,
+          "distinct_count": 50,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 59.0,
+            "mean": 5.744922994704368,
+            "median": 2.0,
+            "min": 1.0,
+            "negative_count": 0,
+            "p01": 1.0,
+            "p05": 1.0,
+            "p25": 1.0,
+            "p75": 6.0,
+            "p95": 25.0,
+            "p99": 43.0,
+            "std": 8.418111964770473,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 27088,
+              "value": "1"
+            },
+            {
+              "count": 15309,
+              "value": "2"
+            },
+            {
+              "count": 9010,
+              "value": "3"
+            },
+            {
+              "count": 7122,
+              "value": "4"
+            },
+            {
+              "count": 3172,
+              "value": "5"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_dst_sport_ltm": {
+          "blank_like_token_count": 0,
+          "distinct_count": 33,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 38.0,
+            "mean": 3.663010737015984,
+            "median": 1.0,
+            "min": 1.0,
+            "negative_count": 0,
+            "p01": 1.0,
+            "p05": 1.0,
+            "p25": 1.0,
+            "p75": 3.0,
+            "p95": 18.0,
+            "p99": 25.0,
+            "std": 5.915386045711441,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 53883,
+              "value": "1"
+            },
+            {
+              "count": 6524,
+              "value": "2"
+            },
+            {
+              "count": 5127,
+              "value": "4"
+            },
+            {
+              "count": 4499,
+              "value": "3"
+            },
+            {
+              "count": 2251,
+              "value": "25"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_dst_src_ltm": {
+          "blank_like_token_count": 0,
+          "distinct_count": 57,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 63.0,
+            "mean": 7.456359617159792,
+            "median": 3.0,
+            "min": 1.0,
+            "negative_count": 0,
+            "p01": 1.0,
+            "p05": 1.0,
+            "p25": 1.0,
+            "p75": 6.0,
+            "p95": 37.0,
+            "p99": 46.0,
+            "std": 11.415191374447998,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 27345,
+              "value": "1"
+            },
+            {
+              "count": 11534,
+              "value": "2"
+            },
+            {
+              "count": 8501,
+              "value": "3"
+            },
+            {
+              "count": 7906,
+              "value": "4"
+            },
+            {
+              "count": 3828,
+              "value": "5"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_flw_http_mthd": {
+          "blank_like_token_count": 0,
+          "distinct_count": 8,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 16.0,
+            "mean": 0.1297429917893407,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 0.0,
+            "p95": 1.0,
+            "p99": 1.0,
+            "std": 0.6386825746380614,
+            "zero_count": 74752
+          },
+          "top_values": [
+            {
+              "count": 74752,
+              "value": "0"
+            },
+            {
+              "count": 6908,
+              "value": "1"
+            },
+            {
+              "count": 478,
+              "value": "4"
+            },
+            {
+              "count": 126,
+              "value": "9"
+            },
+            {
+              "count": 32,
+              "value": "16"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_ftp_cmd": {
+          "blank_like_token_count": 0,
+          "distinct_count": 3,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 2.0,
+            "mean": 0.008380702521498324,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 0.0,
+            "p95": 0.0,
+            "p99": 0.0,
+            "std": 0.09248507528583041,
+            "zero_count": 81652
+          },
+          "top_values": [
+            {
+              "count": 81652,
+              "value": "0"
+            },
+            {
+              "count": 670,
+              "value": "1"
+            },
+            {
+              "count": 10,
+              "value": "2"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_src_dport_ltm": {
+          "blank_like_token_count": 0,
+          "distinct_count": 50,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 59.0,
+            "mean": 4.928897633969781,
+            "median": 1.0,
+            "min": 1.0,
+            "negative_count": 0,
+            "p01": 1.0,
+            "p05": 1.0,
+            "p25": 1.0,
+            "p75": 4.0,
+            "p95": 25.0,
+            "p99": 43.0,
+            "std": 8.389545255933495,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 43181,
+              "value": "1"
+            },
+            {
+              "count": 11661,
+              "value": "2"
+            },
+            {
+              "count": 5173,
+              "value": "3"
+            },
+            {
+              "count": 4645,
+              "value": "4"
+            },
+            {
+              "count": 2295,
+              "value": "6"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_src_ltm": {
+          "blank_like_token_count": 0,
+          "distinct_count": 50,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 60.0,
+            "mean": 6.468359811494923,
+            "median": 3.0,
+            "min": 1.0,
+            "negative_count": 0,
+            "p01": 1.0,
+            "p05": 1.0,
+            "p25": 1.0,
+            "p75": 7.0,
+            "p95": 25.0,
+            "p99": 43.0,
+            "std": 8.543926678517815,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 21155,
+              "value": "1"
+            },
+            {
+              "count": 15300,
+              "value": "2"
+            },
+            {
+              "count": 9496,
+              "value": "3"
+            },
+            {
+              "count": 6483,
+              "value": "4"
+            },
+            {
+              "count": 4157,
+              "value": "5"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_srv_dst": {
+          "blank_like_token_count": 0,
+          "distinct_count": 57,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 62.0,
+            "mean": 9.164261769421367,
+            "median": 5.0,
+            "min": 1.0,
+            "negative_count": 0,
+            "p01": 1.0,
+            "p05": 1.0,
+            "p25": 2.0,
+            "p75": 11.0,
+            "p95": 36.0,
+            "p99": 46.0,
+            "std": 11.121413377603817,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 16621,
+              "value": "1"
+            },
+            {
+              "count": 9102,
+              "value": "2"
+            },
+            {
+              "count": 7900,
+              "value": "3"
+            },
+            {
+              "count": 6294,
+              "value": "4"
+            },
+            {
+              "count": 5400,
+              "value": "5"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_srv_src": {
+          "blank_like_token_count": 0,
+          "distinct_count": 57,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 63.0,
+            "mean": 9.54660399358694,
+            "median": 5.0,
+            "min": 1.0,
+            "negative_count": 0,
+            "p01": 1.0,
+            "p05": 1.0,
+            "p25": 2.0,
+            "p75": 11.0,
+            "p95": 37.0,
+            "p99": 46.0,
+            "std": 11.09028854502271,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 13626,
+              "value": "1"
+            },
+            {
+              "count": 8986,
+              "value": "2"
+            },
+            {
+              "count": 7799,
+              "value": "3"
+            },
+            {
+              "count": 6583,
+              "value": "4"
+            },
+            {
+              "count": 5476,
+              "value": "5"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_state_ttl": {
+          "blank_like_token_count": 0,
+          "distinct_count": 7,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 6.0,
+            "mean": 1.3692731866103094,
+            "median": 1.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 1.0,
+            "p75": 2.0,
+            "p95": 2.0,
+            "p99": 6.0,
+            "std": 1.0671880910513527,
+            "zero_count": 17045
+          },
+          "top_values": [
+            {
+              "count": 34100,
+              "value": "2"
+            },
+            {
+              "count": 27234,
+              "value": "1"
+            },
+            {
+              "count": 17045,
+              "value": "0"
+            },
+            {
+              "count": 2120,
+              "value": "3"
+            },
+            {
+              "count": 1804,
+              "value": "6"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dbytes": {
+          "blank_like_token_count": 0,
+          "distinct_count": 4034,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 14657531.0,
+            "mean": 13233.78556332896,
+            "median": 178.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 956.0,
+            "p95": 30622.0,
+            "p99": 207751.0,
+            "std": 151471.45609124954,
+            "zero_count": 36006
+          },
+          "top_values": [
+            {
+              "count": 36006,
+              "value": "0"
+            },
+            {
+              "count": 7141,
+              "value": "268"
+            },
+            {
+              "count": 5497,
+              "value": "354"
+            },
+            {
+              "count": 2138,
+              "value": "178"
+            },
+            {
+              "count": 1905,
+              "value": "86"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dinpkt": {
+          "blank_like_token_count": 0,
+          "distinct_count": 37617,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 57739.24,
+            "mean": 121.70128382695671,
+            "median": 0.01,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 63.13636875,
+            "p95": 167.62685095,
+            "p99": 556.0523542200011,
+            "std": 1292.378498781412,
+            "zero_count": 36015
+          },
+          "top_values": [
+            {
+              "count": 36015,
+              "value": "0"
+            },
+            {
+              "count": 1331,
+              "value": "0.008"
+            },
+            {
+              "count": 904,
+              "value": "0.009"
+            },
+            {
+              "count": 641,
+              "value": "0.007"
+            },
+            {
+              "count": 508,
+              "value": "0.002"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "djit": {
+          "blank_like_token_count": 0,
+          "distinct_count": 38381,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 463199.2401,
+            "mean": 535.1804302089224,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 128.45991425,
+            "p95": 2218.9335255499973,
+            "p99": 9049.68500940002,
+            "std": 3635.305382910511,
+            "zero_count": 41552
+          },
+          "top_values": [
+            {
+              "count": 41552,
+              "value": "0"
+            },
+            {
+              "count": 20,
+              "value": "196.928172"
+            },
+            {
+              "count": 11,
+              "value": "70.142297"
+            },
+            {
+              "count": 9,
+              "value": "12723.928"
+            },
+            {
+              "count": 9,
+              "value": "7579.063"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dload": {
+          "blank_like_token_count": 0,
+          "distinct_count": 40614,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 20821108.0,
+            "mean": 630546.9589998035,
+            "median": 2112.951416,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 15858.082275,
+            "p95": 3741445.5999999936,
+            "p99": 14180870.830000004,
+            "std": 2393000.555645627,
+            "zero_count": 36013
+          },
+          "top_values": [
+            {
+              "count": 36013,
+              "value": "0"
+            },
+            {
+              "count": 27,
+              "value": "657433.0625"
+            },
+            {
+              "count": 25,
+              "value": "678741.6875"
+            },
+            {
+              "count": 24,
+              "value": "664799.25"
+            },
+            {
+              "count": 24,
+              "value": "676806.125"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dloss": {
+          "blank_like_token_count": 0,
+          "distinct_count": 311,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 5507.0,
+            "mean": 6.308555604139339,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 2.0,
+            "p95": 18.0,
+            "p99": 97.69000000000233,
+            "std": 55.70802143325085,
+            "zero_count": 41204
+          },
+          "top_values": [
+            {
+              "count": 41204,
+              "value": "0"
+            },
+            {
+              "count": 15745,
+              "value": "1"
+            },
+            {
+              "count": 6211,
+              "value": "2"
+            },
+            {
+              "count": 4119,
+              "value": "4"
+            },
+            {
+              "count": 2233,
+              "value": "8"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dmean": {
+          "blank_like_token_count": 0,
+          "distinct_count": 1222,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 1500.0,
+            "mean": 116.2750692318904,
+            "median": 44.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 87.0,
+            "p95": 683.0,
+            "p99": 1250.0,
+            "std": 244.60027141356582,
+            "zero_count": 36006
+          },
+          "top_values": [
+            {
+              "count": 36006,
+              "value": "0"
+            },
+            {
+              "count": 7243,
+              "value": "45"
+            },
+            {
+              "count": 6283,
+              "value": "44"
+            },
+            {
+              "count": 2260,
+              "value": "89"
+            },
+            {
+              "count": 2143,
+              "value": "43"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dpkts": {
+          "blank_like_token_count": 0,
+          "distinct_count": 436,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 11018.0,
+            "mean": 17.54593596657436,
+            "median": 2.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 10.0,
+            "p95": 54.0,
+            "p99": 252.0,
+            "std": 115.57408562825539,
+            "zero_count": 36006
+          },
+          "top_values": [
+            {
+              "count": 36006,
+              "value": "0"
+            },
+            {
+              "count": 9465,
+              "value": "8"
+            },
+            {
+              "count": 7464,
+              "value": "6"
+            },
+            {
+              "count": 5448,
+              "value": "2"
+            },
+            {
+              "count": 3746,
+              "value": "10"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dtcpb": {
+          "blank_like_token_count": 0,
+          "distinct_count": 39108,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 4294880717.0,
+            "mean": 1073464670.8803867,
+            "median": 28569748.5,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 2144205173.0,
+            "p95": 3862458876.4499993,
+            "p99": 4209814272.39,
+            "std": 1381996192.032797,
+            "zero_count": 40894
+          },
+          "top_values": [
+            {
+              "count": 40894,
+              "value": "0"
+            },
+            {
+              "count": 24,
+              "value": "1460955064"
+            },
+            {
+              "count": 18,
+              "value": "3773804157"
+            },
+            {
+              "count": 12,
+              "value": "463094449"
+            },
+            {
+              "count": 9,
+              "value": "1649858926"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dttl": {
+          "blank_like_token_count": 0,
+          "distinct_count": 8,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 253.0,
+            "mean": 95.71300344944858,
+            "median": 29.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 252.0,
+            "p95": 252.0,
+            "p99": 252.0,
+            "std": 116.66772163700348,
+            "zero_count": 36067
+          },
+          "top_values": [
+            {
+              "count": 36067,
+              "value": "0"
+            },
+            {
+              "count": 29280,
+              "value": "252"
+            },
+            {
+              "count": 16668,
+              "value": "29"
+            },
+            {
+              "count": 225,
+              "value": "60"
+            },
+            {
+              "count": 43,
+              "value": "30"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dur": {
+          "blank_like_token_count": 0,
+          "distinct_count": 39888,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 59.999989,
+            "mean": 1.0067561463464996,
+            "median": 0.014138,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 3e-06,
+            "p25": 8e-06,
+            "p75": 0.71936025,
+            "p95": 2.403792249999999,
+            "p99": 22.04829,
+            "std": 4.710444410846159,
+            "zero_count": 950
+          },
+          "top_values": [
+            {
+              "count": 5546,
+              "value": "0.000009"
+            },
+            {
+              "count": 4938,
+              "value": "0.000008"
+            },
+            {
+              "count": 4111,
+              "value": "0.000003"
+            },
+            {
+              "count": 3336,
+              "value": "0.000004"
+            },
+            {
+              "count": 3112,
+              "value": "0.000011"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dwin": {
+          "blank_like_token_count": 0,
+          "distinct_count": 14,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 255.0,
+            "mean": 128.28662002623525,
+            "median": 255.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 255.0,
+            "p95": 255.0,
+            "p99": 255.0,
+            "std": 127.49137005592411,
+            "zero_count": 40904
+          },
+          "top_values": [
+            {
+              "count": 41415,
+              "value": "255"
+            },
+            {
+              "count": 40904,
+              "value": "0"
+            },
+            {
+              "count": 2,
+              "value": "27"
+            },
+            {
+              "count": 1,
+              "value": "81"
+            },
+            {
+              "count": 1,
+              "value": "160"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "id": {
+          "blank_like_token_count": 0,
+          "distinct_count": 82332,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 82332.0,
+            "mean": 41166.5,
+            "median": 41166.5,
+            "min": 1.0,
+            "negative_count": 0,
+            "p01": 824.3100000000001,
+            "p05": 4117.55,
+            "p25": 20583.75,
+            "p75": 61749.25,
+            "p95": 78215.45,
+            "p99": 81508.69,
+            "std": 23767.345518589154,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 1,
+              "value": "1"
+            },
+            {
+              "count": 1,
+              "value": "2"
+            },
+            {
+              "count": 1,
+              "value": "3"
+            },
+            {
+              "count": 1,
+              "value": "4"
+            },
+            {
+              "count": 1,
+              "value": "5"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "is_ftp_login": {
+          "blank_like_token_count": 0,
+          "distinct_count": 3,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 2.0,
+            "mean": 0.008283534956031676,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 0.0,
+            "p95": 0.0,
+            "p99": 0.0,
+            "std": 0.09117119352896848,
+            "zero_count": 81654
+          },
+          "top_values": [
+            {
+              "count": 81654,
+              "value": "0"
+            },
+            {
+              "count": 674,
+              "value": "1"
+            },
+            {
+              "count": 4,
+              "value": "2"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "is_sm_ips_ports": {
+          "blank_like_token_count": 0,
+          "distinct_count": 2,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 1.0,
+            "mean": 0.011125686245931108,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 0.0,
+            "p95": 0.0,
+            "p99": 1.0,
+            "std": 0.10489060483025199,
+            "zero_count": 81416
+          },
+          "top_values": [
+            {
+              "count": 81416,
+              "value": "0"
+            },
+            {
+              "count": 916,
+              "value": "1"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "label": {
+          "blank_like_token_count": 0,
+          "distinct_count": 2,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "top_values": [
+            {
+              "count": 45332,
+              "value": "1"
+            },
+            {
+              "count": 37000,
+              "value": "0"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "proto": {
+          "blank_like_token_count": 0,
+          "distinct_count": 131,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "top_values": [
+            {
+              "count": 43095,
+              "value": "tcp"
+            },
+            {
+              "count": 29418,
+              "value": "udp"
+            },
+            {
+              "count": 3515,
+              "value": "unas"
+            },
+            {
+              "count": 987,
+              "value": "arp"
+            },
+            {
+              "count": 676,
+              "value": "ospf"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "rate": {
+          "blank_like_token_count": 0,
+          "distinct_count": 40616,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 1000000.003,
+            "mean": 82410.88673910811,
+            "median": 2650.176667,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 9.16145065,
+            "p25": 28.606114,
+            "p75": 111111.1072,
+            "p95": 333333.3215,
+            "p99": 1000000.003,
+            "std": 148620.3670405897,
+            "zero_count": 999
+          },
+          "top_values": [
+            {
+              "count": 5603,
+              "value": "111111.1072"
+            },
+            {
+              "count": 4941,
+              "value": "125000.0003"
+            },
+            {
+              "count": 3957,
+              "value": "333333.3215"
+            },
+            {
+              "count": 3281,
+              "value": "90909.0902"
+            },
+            {
+              "count": 3220,
+              "value": "250000.0006"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "response_body_len": {
+          "blank_like_token_count": 0,
+          "distinct_count": 1190,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 5242880.0,
+            "mean": 1595.3718845649323,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 0.0,
+            "p95": 150.4499999999971,
+            "p99": 3924.0,
+            "std": 38066.97229164302,
+            "zero_count": 76675
+          },
+          "top_values": [
+            {
+              "count": 76675,
+              "value": "0"
+            },
+            {
+              "count": 1042,
+              "value": "3924"
+            },
+            {
+              "count": 361,
+              "value": "83"
+            },
+            {
+              "count": 149,
+              "value": "524288"
+            },
+            {
+              "count": 99,
+              "value": "109"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "sbytes": {
+          "blank_like_token_count": 0,
+          "distinct_count": 4489,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 14355774.0,
+            "mean": 7993.908164504688,
+            "median": 534.0,
+            "min": 24.0,
+            "negative_count": 0,
+            "p01": 46.0,
+            "p05": 104.0,
+            "p25": 114.0,
+            "p75": 1280.0,
+            "p95": 12472.0,
+            "p99": 69970.04000000004,
+            "std": 171642.2618800507,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 18158,
+              "value": "114"
+            },
+            {
+              "count": 7187,
+              "value": "200"
+            },
+            {
+              "count": 2376,
+              "value": "534"
+            },
+            {
+              "count": 2140,
+              "value": "146"
+            },
+            {
+              "count": 1661,
+              "value": "1540"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "service": {
+          "blank_like_token_count": 0,
+          "distinct_count": 13,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "top_values": [
+            {
+              "count": 47153,
+              "value": "-"
+            },
+            {
+              "count": 21367,
+              "value": "dns"
+            },
+            {
+              "count": 8287,
+              "value": "http"
+            },
+            {
+              "count": 1851,
+              "value": "smtp"
+            },
+            {
+              "count": 1552,
+              "value": "ftp"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "sinpkt": {
+          "blank_like_token_count": 0,
+          "distinct_count": 39970,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 60009.992,
+            "mean": 755.3943010848151,
+            "median": 0.5579285,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.001,
+            "p05": 0.003,
+            "p25": 0.008,
+            "p75": 63.40944425,
+            "p95": 204.530258,
+            "p99": 60000.06856,
+            "std": 6182.615731603772,
+            "zero_count": 181
+          },
+          "top_values": [
+            {
+              "count": 5657,
+              "value": "0.009"
+            },
+            {
+              "count": 5088,
+              "value": "0.008"
+            },
+            {
+              "count": 4395,
+              "value": "0.011"
+            },
+            {
+              "count": 4024,
+              "value": "0.003"
+            },
+            {
+              "count": 3791,
+              "value": "0.01"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "sjit": {
+          "blank_like_token_count": 0,
+          "distinct_count": 39944,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 1483830.917,
+            "mean": 6363.075099675206,
+            "median": 17.6239185,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 3219.33241225,
+            "p95": 9532.38264575,
+            "p99": 31014.052,
+            "std": 56724.01668947716,
+            "zero_count": 38650
+          },
+          "top_values": [
+            {
+              "count": 38650,
+              "value": "0"
+            },
+            {
+              "count": 23,
+              "value": "32.106723"
+            },
+            {
+              "count": 22,
+              "value": "55.640574"
+            },
+            {
+              "count": 21,
+              "value": "29.430768"
+            },
+            {
+              "count": 21,
+              "value": "38.80402"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "sload": {
+          "blank_like_token_count": 0,
+          "distinct_count": 42873,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 5268000256.0,
+            "mean": 64549016.914059296,
+            "median": 577003.21875,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 2865.702637,
+            "p25": 11202.4667975,
+            "p75": 65142856.0,
+            "p95": 266666656.0,
+            "p99": 800000000.0,
+            "std": 179861832.6300027,
+            "zero_count": 999
+          },
+          "top_values": [
+            {
+              "count": 3271,
+              "value": "50666664"
+            },
+            {
+              "count": 2586,
+              "value": "57000000"
+            },
+            {
+              "count": 1997,
+              "value": "152000000"
+            },
+            {
+              "count": 1994,
+              "value": "114000000"
+            },
+            {
+              "count": 1854,
+              "value": "41454544"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "sloss": {
+          "blank_like_token_count": 0,
+          "distinct_count": 253,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 5319.0,
+            "mean": 4.753692367487733,
+            "median": 1.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 3.0,
+            "p95": 11.0,
+            "p99": 39.0,
+            "std": 64.64961956032252,
+            "zero_count": 39320
+          },
+          "top_values": [
+            {
+              "count": 39320,
+              "value": "0"
+            },
+            {
+              "count": 19304,
+              "value": "2"
+            },
+            {
+              "count": 6005,
+              "value": "7"
+            },
+            {
+              "count": 3739,
+              "value": "4"
+            },
+            {
+              "count": 3575,
+              "value": "3"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "smean": {
+          "blank_like_token_count": 0,
+          "distinct_count": 1282,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 1504.0,
+            "mean": 139.52860370208424,
+            "median": 65.0,
+            "min": 24.0,
+            "negative_count": 0,
+            "p01": 43.0,
+            "p05": 46.0,
+            "p25": 57.0,
+            "p75": 100.0,
+            "p95": 638.0,
+            "p99": 1137.0,
+            "std": 208.47206330498105,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 18924,
+              "value": "57"
+            },
+            {
+              "count": 7356,
+              "value": "100"
+            },
+            {
+              "count": 3754,
+              "value": "53"
+            },
+            {
+              "count": 2242,
+              "value": "73"
+            },
+            {
+              "count": 2137,
+              "value": "56"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "spkts": {
+          "blank_like_token_count": 0,
+          "distinct_count": 420,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 10646.0,
+            "mean": 18.666472331535733,
+            "median": 6.0,
+            "min": 1.0,
+            "negative_count": 0,
+            "p01": 1.0,
+            "p05": 2.0,
+            "p25": 2.0,
+            "p75": 12.0,
+            "p95": 60.0,
+            "p99": 208.0,
+            "std": 133.91635344919015,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 36982,
+              "value": "2"
+            },
+            {
+              "count": 16386,
+              "value": "10"
+            },
+            {
+              "count": 3093,
+              "value": "12"
+            },
+            {
+              "count": 2648,
+              "value": "14"
+            },
+            {
+              "count": 2489,
+              "value": "16"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "state": {
+          "blank_like_token_count": 0,
+          "distinct_count": 7,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "top_values": [
+            {
+              "count": 39339,
+              "value": "FIN"
+            },
+            {
+              "count": 34163,
+              "value": "INT"
+            },
+            {
+              "count": 6982,
+              "value": "CON"
+            },
+            {
+              "count": 1842,
+              "value": "REQ"
+            },
+            {
+              "count": 4,
+              "value": "ACC"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "stcpb": {
+          "blank_like_token_count": 0,
+          "distinct_count": 39219,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 4294949667.0,
+            "mean": 1084641551.1152892,
+            "median": 27888855.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 2171309606.5,
+            "p95": 3876194476.45,
+            "p99": 4213679682.8400006,
+            "std": 1390859761.610447,
+            "zero_count": 40881
+          },
+          "top_values": [
+            {
+              "count": 40881,
+              "value": "0"
+            },
+            {
+              "count": 16,
+              "value": "3738475984"
+            },
+            {
+              "count": 12,
+              "value": "1057528719"
+            },
+            {
+              "count": 9,
+              "value": "3536959022"
+            },
+            {
+              "count": 9,
+              "value": "2395243350"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "sttl": {
+          "blank_like_token_count": 0,
+          "distinct_count": 11,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 255.0,
+            "mean": 180.96766749259098,
+            "median": 254.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 31.0,
+            "p25": 62.0,
+            "p75": 254.0,
+            "p95": 254.0,
+            "p99": 254.0,
+            "std": 101.51335750093565,
+            "zero_count": 1048
+          },
+          "top_values": [
+            {
+              "count": 54049,
+              "value": "254"
+            },
+            {
+              "count": 16702,
+              "value": "31"
+            },
+            {
+              "count": 10374,
+              "value": "62"
+            },
+            {
+              "count": 1048,
+              "value": "0"
+            },
+            {
+              "count": 50,
+              "value": "29"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "swin": {
+          "blank_like_token_count": 0,
+          "distinct_count": 11,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 255.0,
+            "mean": 133.45908030899287,
+            "median": 255.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 255.0,
+            "p95": 255.0,
+            "p99": 255.0,
+            "std": 127.35699974821928,
+            "zero_count": 39237
+          },
+          "top_values": [
+            {
+              "count": 43086,
+              "value": "255"
+            },
+            {
+              "count": 39237,
+              "value": "0"
+            },
+            {
+              "count": 1,
+              "value": "156"
+            },
+            {
+              "count": 1,
+              "value": "202"
+            },
+            {
+              "count": 1,
+              "value": "99"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "synack": {
+          "blank_like_token_count": 0,
+          "distinct_count": 24934,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 3.226788,
+            "mean": 0.029255929201282616,
+            "median": 0.000441,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 0.0525955,
+            "p95": 0.117926,
+            "p99": 0.1995035100000002,
+            "std": 0.07085352141912635,
+            "zero_count": 41127
+          },
+          "top_values": [
+            {
+              "count": 41127,
+              "value": "0"
+            },
+            {
+              "count": 120,
+              "value": "0.000548"
+            },
+            {
+              "count": 113,
+              "value": "0.000551"
+            },
+            {
+              "count": 107,
+              "value": "0.000535"
+            },
+            {
+              "count": 106,
+              "value": "0.000543"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "tcprtt": {
+          "blank_like_token_count": 0,
+          "distinct_count": 26130,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 3.821465,
+            "mean": 0.055925044429869314,
+            "median": 0.000551,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 0.10554074999999999,
+            "p95": 0.2181648,
+            "p99": 0.3575806500000002,
+            "std": 0.11602177116004109,
+            "zero_count": 41127
+          },
+          "top_values": [
+            {
+              "count": 41127,
+              "value": "0"
+            },
+            {
+              "count": 85,
+              "value": "0.000665"
+            },
+            {
+              "count": 80,
+              "value": "0.000678"
+            },
+            {
+              "count": 80,
+              "value": "0.000667"
+            },
+            {
+              "count": 78,
+              "value": "0.000675"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "trans_depth": {
+          "blank_like_token_count": 0,
+          "distinct_count": 8,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 131.0,
+            "mean": 0.09427683039401448,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 0.0,
+            "p95": 1.0,
+            "p99": 1.0,
+            "std": 0.5429218189784762,
+            "zero_count": 74750
+          },
+          "top_values": [
+            {
+              "count": 74750,
+              "value": "0"
+            },
+            {
+              "count": 7548,
+              "value": "1"
+            },
+            {
+              "count": 28,
+              "value": "2"
+            },
+            {
+              "count": 2,
+              "value": "3"
+            },
+            {
+              "count": 1,
+              "value": "131"
+            }
+          ],
+          "whitespace_only_count": 0
+        }
+      },
+      "columns": 45,
+      "duplicate_column_names": [],
+      "duplicate_full_rows": 0,
+      "duplicate_rows_excluding_id": 26387,
+      "empty_header_names": 0,
+      "expected_bytes": 15380800,
+      "expected_rows": 82332,
+      "expected_sha256": "734FE6642EDF758F7C94D7D9149426B49D202FE8E7BF0BEF47392489C3C0A559",
+      "file": "UNSW_NB15_testing-set.csv",
+      "hash_matches_expected": true,
+      "id_diagnostics": {
+        "attack_rate_by_id_quantile": [
+          0.9704882195773622,
+          1.0,
+          0.8372403741042147,
+          0.0,
+          0.0,
+          0.6998663913518766,
+          1.0,
+          0.9984209887039961,
+          0.0,
+          0.0
+        ],
+        "max": 82332.0,
+        "min": 1.0,
+        "pearson_correlation_with_label": -0.3874886497428223,
+        "row_count": 82332,
+        "unique_count": 82332
+      },
+      "label_counts": {
+        "0": 37000,
+        "1": 45332
+      },
+      "literal_blank_like_token_count": 0,
+      "predictor_duplicate_screen": {
+        "distinct_repeated_predictor_vectors": 6318,
+        "excess_rows_after_first_predictor_vector": 28386,
+        "predictor_vectors_with_multiple_labels": 6,
+        "rows_in_predictor_vectors_with_multiple_labels": 14,
+        "rows_with_repeated_predictor_vector": 34704
+      },
+      "row_count_matches_expected": true,
+      "rows": 82332,
+      "sha256": "734FE6642EDF758F7C94D7D9149426B49D202FE8E7BF0BEF47392489C3C0A559",
+      "size_matches_expected": true
+    },
+    "training": {
+      "actual_bytes": 32293018,
+      "attack_label_counts": {
+        "Analysis": {
+          "1": 2000
+        },
+        "Backdoor": {
+          "1": 1746
+        },
+        "DoS": {
+          "1": 12264
+        },
+        "Exploits": {
+          "1": 33393
+        },
+        "Fuzzers": {
+          "1": 18184
+        },
+        "Generic": {
+          "1": 40000
+        },
+        "Normal": {
+          "0": 56000
+        },
+        "Reconnaissance": {
+          "1": 10491
+        },
+        "Shellcode": {
+          "1": 1133
+        },
+        "Worms": {
+          "1": 130
+        }
+      },
+      "attack_to_label_values": {
+        "Analysis": [
+          "1"
+        ],
+        "Backdoor": [
+          "1"
+        ],
+        "DoS": [
+          "1"
+        ],
+        "Exploits": [
+          "1"
+        ],
+        "Fuzzers": [
+          "1"
+        ],
+        "Generic": [
+          "1"
+        ],
+        "Normal": [
+          "0"
+        ],
+        "Reconnaissance": [
+          "1"
+        ],
+        "Shellcode": [
+          "1"
+        ],
+        "Worms": [
+          "1"
+        ]
+      },
+      "blank_cell_count": 0,
+      "column_names": [
+        "id",
+        "dur",
+        "proto",
+        "service",
+        "state",
+        "spkts",
+        "dpkts",
+        "sbytes",
+        "dbytes",
+        "rate",
+        "sttl",
+        "dttl",
+        "sload",
+        "dload",
+        "sloss",
+        "dloss",
+        "sinpkt",
+        "dinpkt",
+        "sjit",
+        "djit",
+        "swin",
+        "stcpb",
+        "dtcpb",
+        "dwin",
+        "tcprtt",
+        "synack",
+        "ackdat",
+        "smean",
+        "dmean",
+        "trans_depth",
+        "response_body_len",
+        "ct_srv_src",
+        "ct_state_ttl",
+        "ct_dst_ltm",
+        "ct_src_dport_ltm",
+        "ct_dst_sport_ltm",
+        "ct_dst_src_ltm",
+        "is_ftp_login",
+        "ct_ftp_cmd",
+        "ct_flw_http_mthd",
+        "ct_src_ltm",
+        "ct_srv_dst",
+        "is_sm_ips_ports",
+        "attack_cat",
+        "label"
+      ],
+      "column_profile": {
+        "ackdat": {
+          "blank_like_token_count": 0,
+          "distinct_count": 37708,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 1.520884,
+            "mean": 0.020375193879355085,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 0.038906,
+            "p95": 0.095469,
+            "p99": 0.14506680000000022,
+            "std": 0.040506355913428764,
+            "zero_count": 96301
+          },
+          "top_values": [
+            {
+              "count": 96301,
+              "value": "0"
+            },
+            {
+              "count": 1226,
+              "value": "0.000124"
+            },
+            {
+              "count": 1205,
+              "value": "0.000125"
+            },
+            {
+              "count": 1043,
+              "value": "0.000123"
+            },
+            {
+              "count": 1007,
+              "value": "0.000126"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "attack_cat": {
+          "blank_like_token_count": 0,
+          "distinct_count": 10,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "top_values": [
+            {
+              "count": 56000,
+              "value": "Normal"
+            },
+            {
+              "count": 40000,
+              "value": "Generic"
+            },
+            {
+              "count": 33393,
+              "value": "Exploits"
+            },
+            {
+              "count": 18184,
+              "value": "Fuzzers"
+            },
+            {
+              "count": 12264,
+              "value": "DoS"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_dst_ltm": {
+          "blank_like_token_count": 0,
+          "distinct_count": 50,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 51.0,
+            "mean": 6.193936386811983,
+            "median": 2.0,
+            "min": 1.0,
+            "negative_count": 0,
+            "p01": 1.0,
+            "p05": 1.0,
+            "p25": 1.0,
+            "p75": 7.0,
+            "p95": 24.0,
+            "p99": 34.0,
+            "std": 8.052476384089168,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 56539,
+              "value": "1"
+            },
+            {
+              "count": 33331,
+              "value": "2"
+            },
+            {
+              "count": 18424,
+              "value": "3"
+            },
+            {
+              "count": 10191,
+              "value": "4"
+            },
+            {
+              "count": 6632,
+              "value": "16"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_dst_sport_ltm": {
+          "blank_like_token_count": 0,
+          "distinct_count": 32,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 46.0,
+            "mean": 4.206255239789895,
+            "median": 1.0,
+            "min": 1.0,
+            "negative_count": 0,
+            "p01": 1.0,
+            "p05": 1.0,
+            "p25": 1.0,
+            "p75": 3.0,
+            "p95": 17.0,
+            "p99": 18.0,
+            "std": 5.783585061266456,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 109640,
+              "value": "1"
+            },
+            {
+              "count": 16029,
+              "value": "2"
+            },
+            {
+              "count": 10619,
+              "value": "16"
+            },
+            {
+              "count": 7781,
+              "value": "17"
+            },
+            {
+              "count": 6945,
+              "value": "3"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_dst_src_ltm": {
+          "blank_like_token_count": 0,
+          "distinct_count": 54,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 65.0,
+            "mean": 8.729880632595913,
+            "median": 3.0,
+            "min": 1.0,
+            "negative_count": 0,
+            "p01": 1.0,
+            "p05": 1.0,
+            "p25": 1.0,
+            "p75": 12.0,
+            "p95": 33.0,
+            "p99": 41.0,
+            "std": 10.95618557595772,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 47072,
+              "value": "1"
+            },
+            {
+              "count": 25072,
+              "value": "2"
+            },
+            {
+              "count": 16809,
+              "value": "3"
+            },
+            {
+              "count": 13177,
+              "value": "4"
+            },
+            {
+              "count": 9333,
+              "value": "5"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_flw_http_mthd": {
+          "blank_like_token_count": 0,
+          "distinct_count": 11,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 30.0,
+            "mean": 0.13306642485214526,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 0.0,
+            "p95": 1.0,
+            "p99": 1.0,
+            "std": 0.701207606749996,
+            "zero_count": 157501
+          },
+          "top_values": [
+            {
+              "count": 157501,
+              "value": "0"
+            },
+            {
+              "count": 16696,
+              "value": "1"
+            },
+            {
+              "count": 846,
+              "value": "4"
+            },
+            {
+              "count": 90,
+              "value": "9"
+            },
+            {
+              "count": 74,
+              "value": "2"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_ftp_cmd": {
+          "blank_like_token_count": 0,
+          "distinct_count": 4,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 4.0,
+            "mean": 0.014948015581067748,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 0.0,
+            "p95": 0.0,
+            "p99": 1.0,
+            "std": 0.1260480473850499,
+            "zero_count": 172774
+          },
+          "top_values": [
+            {
+              "count": 172774,
+              "value": "0"
+            },
+            {
+              "count": 2545,
+              "value": "1"
+            },
+            {
+              "count": 16,
+              "value": "4"
+            },
+            {
+              "count": 6,
+              "value": "2"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_src_dport_ltm": {
+          "blank_like_token_count": 0,
+          "distinct_count": 47,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 51.0,
+            "mean": 5.383538362390998,
+            "median": 1.0,
+            "min": 1.0,
+            "negative_count": 0,
+            "p01": 1.0,
+            "p05": 1.0,
+            "p25": 1.0,
+            "p75": 5.0,
+            "p95": 22.0,
+            "p99": 34.0,
+            "std": 8.047104197483023,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 92793,
+              "value": "1"
+            },
+            {
+              "count": 24949,
+              "value": "2"
+            },
+            {
+              "count": 9322,
+              "value": "3"
+            },
+            {
+              "count": 8458,
+              "value": "16"
+            },
+            {
+              "count": 6325,
+              "value": "17"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_src_ltm": {
+          "blank_like_token_count": 0,
+          "distinct_count": 50,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 60.0,
+            "mean": 6.955789005423717,
+            "median": 3.0,
+            "min": 1.0,
+            "negative_count": 0,
+            "p01": 1.0,
+            "p05": 1.0,
+            "p25": 2.0,
+            "p75": 9.0,
+            "p95": 26.0,
+            "p99": 34.0,
+            "std": 8.321492728163477,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 42715,
+              "value": "1"
+            },
+            {
+              "count": 33665,
+              "value": "2"
+            },
+            {
+              "count": 19684,
+              "value": "3"
+            },
+            {
+              "count": 12380,
+              "value": "4"
+            },
+            {
+              "count": 8140,
+              "value": "5"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_srv_dst": {
+          "blank_like_token_count": 0,
+          "distinct_count": 52,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 62.0,
+            "mean": 9.100757951648502,
+            "median": 4.0,
+            "min": 1.0,
+            "negative_count": 0,
+            "p01": 1.0,
+            "p05": 1.0,
+            "p25": 2.0,
+            "p75": 12.0,
+            "p95": 33.0,
+            "p99": 41.0,
+            "std": 10.75695199096367,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 42203,
+              "value": "1"
+            },
+            {
+              "count": 19643,
+              "value": "2"
+            },
+            {
+              "count": 16242,
+              "value": "3"
+            },
+            {
+              "count": 12515,
+              "value": "4"
+            },
+            {
+              "count": 10592,
+              "value": "5"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_srv_src": {
+          "blank_like_token_count": 0,
+          "distinct_count": 52,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 63.0,
+            "mean": 9.306437170998226,
+            "median": 5.0,
+            "min": 1.0,
+            "negative_count": 0,
+            "p01": 1.0,
+            "p05": 1.0,
+            "p25": 2.0,
+            "p75": 12.0,
+            "p95": 33.0,
+            "p99": 41.0,
+            "std": 10.70433122059233,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 36250,
+              "value": "1"
+            },
+            {
+              "count": 20630,
+              "value": "2"
+            },
+            {
+              "count": 16683,
+              "value": "3"
+            },
+            {
+              "count": 13312,
+              "value": "4"
+            },
+            {
+              "count": 10804,
+              "value": "5"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "ct_state_ttl": {
+          "blank_like_token_count": 0,
+          "distinct_count": 5,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 6.0,
+            "mean": 1.3041787146189425,
+            "median": 1.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 1.0,
+            "p75": 2.0,
+            "p95": 2.0,
+            "p99": 6.0,
+            "std": 0.9544060989961584,
+            "zero_count": 40791
+          },
+          "top_values": [
+            {
+              "count": 82054,
+              "value": "2"
+            },
+            {
+              "count": 49355,
+              "value": "1"
+            },
+            {
+              "count": 40791,
+              "value": "0"
+            },
+            {
+              "count": 1930,
+              "value": "6"
+            },
+            {
+              "count": 1211,
+              "value": "3"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dbytes": {
+          "blank_like_token_count": 0,
+          "distinct_count": 6660,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 14655550.0,
+            "mean": 14928.918564397374,
+            "median": 164.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 1102.0,
+            "p95": 39076.0,
+            "p99": 474367.80000000005,
+            "std": 143654.2177178705,
+            "zero_count": 84282
+          },
+          "top_values": [
+            {
+              "count": 84282,
+              "value": "0"
+            },
+            {
+              "count": 11512,
+              "value": "268"
+            },
+            {
+              "count": 9865,
+              "value": "354"
+            },
+            {
+              "count": 4988,
+              "value": "178"
+            },
+            {
+              "count": 2938,
+              "value": "10168"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dinpkt": {
+          "blank_like_token_count": 0,
+          "distinct_count": 74245,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 56716.824,
+            "mean": 88.21629640844411,
+            "median": 0.006,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 51.053,
+            "p95": 160.491672,
+            "p99": 441.6529688000037,
+            "std": 987.0931947448008,
+            "zero_count": 84293
+          },
+          "top_values": [
+            {
+              "count": 84293,
+              "value": "0"
+            },
+            {
+              "count": 3556,
+              "value": "0.007"
+            },
+            {
+              "count": 1061,
+              "value": "0.006"
+            },
+            {
+              "count": 794,
+              "value": "0.002"
+            },
+            {
+              "count": 780,
+              "value": "0.008"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "djit": {
+          "blank_like_token_count": 0,
+          "distinct_count": 76831,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 289388.2697,
+            "mean": 604.3538264155103,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 114.990625,
+            "p95": 3054.771518,
+            "p99": 9466.018592800005,
+            "std": 4061.0432811266783,
+            "zero_count": 93743
+          },
+          "top_values": [
+            {
+              "count": 93743,
+              "value": "0"
+            },
+            {
+              "count": 23,
+              "value": "360.513219"
+            },
+            {
+              "count": 23,
+              "value": "493.566937"
+            },
+            {
+              "count": 21,
+              "value": "571.17"
+            },
+            {
+              "count": 21,
+              "value": "453.78075"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dload": {
+          "blank_like_token_count": 0,
+          "distinct_count": 77474,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 22422730.0,
+            "mean": 671205.5741883258,
+            "median": 1447.022705,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 27844.87109,
+            "p95": 4071050.0,
+            "p99": 14655893.60000001,
+            "std": 2421312.388757486,
+            "zero_count": 84290
+          },
+          "top_values": [
+            {
+              "count": 84290,
+              "value": "0"
+            },
+            {
+              "count": 58,
+              "value": "676163.375"
+            },
+            {
+              "count": 54,
+              "value": "681992.3125"
+            },
+            {
+              "count": 54,
+              "value": "670433.125"
+            },
+            {
+              "count": 53,
+              "value": "680688.3125"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dloss": {
+          "blank_like_token_count": 0,
+          "distinct_count": 370,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 5484.0,
+            "mean": 6.948009877895073,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 2.0,
+            "p95": 24.0,
+            "p99": 178.60000000000582,
+            "std": 52.73299929294158,
+            "zero_count": 96637
+          },
+          "top_values": [
+            {
+              "count": 96637,
+              "value": "0"
+            },
+            {
+              "count": 25076,
+              "value": "1"
+            },
+            {
+              "count": 11603,
+              "value": "2"
+            },
+            {
+              "count": 6857,
+              "value": "4"
+            },
+            {
+              "count": 5241,
+              "value": "8"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dmean": {
+          "blank_like_token_count": 0,
+          "distinct_count": 1328,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 1458.0,
+            "mean": 124.17338215249143,
+            "median": 44.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 89.0,
+            "p95": 786.0,
+            "p99": 1252.0,
+            "std": 258.31705598827045,
+            "zero_count": 84282
+          },
+          "top_values": [
+            {
+              "count": 84282,
+              "value": "0"
+            },
+            {
+              "count": 11690,
+              "value": "45"
+            },
+            {
+              "count": 11592,
+              "value": "44"
+            },
+            {
+              "count": 5296,
+              "value": "89"
+            },
+            {
+              "count": 2941,
+              "value": "565"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dpkts": {
+          "blank_like_token_count": 0,
+          "distinct_count": 443,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 10974.0,
+            "mean": 18.969590683297117,
+            "median": 2.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 10.0,
+            "p95": 62.0,
+            "p99": 400.0,
+            "std": 110.25827058162155,
+            "zero_count": 84282
+          },
+          "top_values": [
+            {
+              "count": 84282,
+              "value": "0"
+            },
+            {
+              "count": 17287,
+              "value": "8"
+            },
+            {
+              "count": 12262,
+              "value": "6"
+            },
+            {
+              "count": 9238,
+              "value": "2"
+            },
+            {
+              "count": 6825,
+              "value": "10"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dtcpb": {
+          "blank_like_token_count": 0,
+          "distinct_count": 75089,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 4294881924.0,
+            "mean": 968877027.0711528,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 1913674673.0,
+            "p95": 3813016696.0,
+            "p99": 4198113418.8,
+            "std": 1353999546.225652,
+            "zero_count": 96252
+          },
+          "top_values": [
+            {
+              "count": 96252,
+              "value": "0"
+            },
+            {
+              "count": 15,
+              "value": "2296510182"
+            },
+            {
+              "count": 12,
+              "value": "3330702795"
+            },
+            {
+              "count": 12,
+              "value": "531409215"
+            },
+            {
+              "count": 11,
+              "value": "1200223257"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dttl": {
+          "blank_like_token_count": 0,
+          "distinct_count": 6,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 254.0,
+            "mean": 79.60956650184498,
+            "median": 29.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 252.0,
+            "p95": 252.0,
+            "p99": 252.0,
+            "std": 110.50686317659952,
+            "zero_count": 84372
+          },
+          "top_values": [
+            {
+              "count": 84372,
+              "value": "0"
+            },
+            {
+              "count": 50643,
+              "value": "252"
+            },
+            {
+              "count": 39455,
+              "value": "29"
+            },
+            {
+              "count": 867,
+              "value": "60"
+            },
+            {
+              "count": 2,
+              "value": "254"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dur": {
+          "blank_like_token_count": 0,
+          "distinct_count": 74039,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 59.999989,
+            "mean": 1.3593886921256295,
+            "median": 0.001582,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 3e-06,
+            "p25": 8e-06,
+            "p75": 0.668069,
+            "p95": 3.079511,
+            "p99": 45.353334200002166,
+            "std": 6.480248856652842,
+            "zero_count": 2657
+          },
+          "top_values": [
+            {
+              "count": 23031,
+              "value": "0.000009"
+            },
+            {
+              "count": 11751,
+              "value": "0.000003"
+            },
+            {
+              "count": 10634,
+              "value": "0.000008"
+            },
+            {
+              "count": 6690,
+              "value": "0.000005"
+            },
+            {
+              "count": 5026,
+              "value": "0.000004"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "dwin": {
+          "blank_like_token_count": 0,
+          "distinct_count": 7,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 255.0,
+            "mean": 115.01362487952048,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 255.0,
+            "p95": 255.0,
+            "p99": 255.0,
+            "std": 126.88652954242663,
+            "zero_count": 96253
+          },
+          "top_values": [
+            {
+              "count": 96253,
+              "value": "0"
+            },
+            {
+              "count": 79083,
+              "value": "255"
+            },
+            {
+              "count": 1,
+              "value": "244"
+            },
+            {
+              "count": 1,
+              "value": "70"
+            },
+            {
+              "count": 1,
+              "value": "48"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "id": {
+          "blank_like_token_count": 0,
+          "distinct_count": 175341,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 175341.0,
+            "mean": 87671.0,
+            "median": 87671.0,
+            "min": 1.0,
+            "negative_count": 0,
+            "p01": 1754.4,
+            "p05": 8768.0,
+            "p25": 43836.0,
+            "p75": 131506.0,
+            "p95": 166574.0,
+            "p99": 173587.6,
+            "std": 50616.731112350586,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 1,
+              "value": "1"
+            },
+            {
+              "count": 1,
+              "value": "2"
+            },
+            {
+              "count": 1,
+              "value": "3"
+            },
+            {
+              "count": 1,
+              "value": "4"
+            },
+            {
+              "count": 1,
+              "value": "5"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "is_ftp_login": {
+          "blank_like_token_count": 0,
+          "distinct_count": 4,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 4.0,
+            "mean": 0.014948015581067748,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 0.0,
+            "p95": 0.0,
+            "p99": 1.0,
+            "std": 0.1260480473850499,
+            "zero_count": 172774
+          },
+          "top_values": [
+            {
+              "count": 172774,
+              "value": "0"
+            },
+            {
+              "count": 2545,
+              "value": "1"
+            },
+            {
+              "count": 16,
+              "value": "4"
+            },
+            {
+              "count": 6,
+              "value": "2"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "is_sm_ips_ports": {
+          "blank_like_token_count": 0,
+          "distinct_count": 2,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 1.0,
+            "mean": 0.015752162928236977,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 0.0,
+            "p95": 0.0,
+            "p99": 1.0,
+            "std": 0.12451554406577864,
+            "zero_count": 172579
+          },
+          "top_values": [
+            {
+              "count": 172579,
+              "value": "0"
+            },
+            {
+              "count": 2762,
+              "value": "1"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "label": {
+          "blank_like_token_count": 0,
+          "distinct_count": 2,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "top_values": [
+            {
+              "count": 119341,
+              "value": "1"
+            },
+            {
+              "count": 56000,
+              "value": "0"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "proto": {
+          "blank_like_token_count": 0,
+          "distinct_count": 133,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "top_values": [
+            {
+              "count": 79946,
+              "value": "tcp"
+            },
+            {
+              "count": 63283,
+              "value": "udp"
+            },
+            {
+              "count": 12084,
+              "value": "unas"
+            },
+            {
+              "count": 2859,
+              "value": "arp"
+            },
+            {
+              "count": 2595,
+              "value": "ospf"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "rate": {
+          "blank_like_token_count": 0,
+          "distinct_count": 76991,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 1000000.003,
+            "mean": 95406.18710518941,
+            "median": 3225.80652,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 7.367939,
+            "p25": 32.78614,
+            "p75": 125000.0003,
+            "p95": 333333.3215,
+            "p99": 1000000.003,
+            "std": 165400.97845725933,
+            "zero_count": 2969
+          },
+          "top_values": [
+            {
+              "count": 23012,
+              "value": "111111.1072"
+            },
+            {
+              "count": 11751,
+              "value": "333333.3215"
+            },
+            {
+              "count": 10616,
+              "value": "125000.0003"
+            },
+            {
+              "count": 6691,
+              "value": "200000.0051"
+            },
+            {
+              "count": 5028,
+              "value": "250000.0006"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "response_body_len": {
+          "blank_like_token_count": 0,
+          "distinct_count": 2386,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 6558056.0,
+            "mean": 2144.2916545474245,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 0.0,
+            "p95": 166.0,
+            "p99": 3924.0,
+            "std": 54207.96729413286,
+            "zero_count": 164047
+          },
+          "top_values": [
+            {
+              "count": 164047,
+              "value": "0"
+            },
+            {
+              "count": 2768,
+              "value": "3924"
+            },
+            {
+              "count": 580,
+              "value": "83"
+            },
+            {
+              "count": 386,
+              "value": "524288"
+            },
+            {
+              "count": 333,
+              "value": "109"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "sbytes": {
+          "blank_like_token_count": 0,
+          "distinct_count": 7214,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 12965233.0,
+            "mean": 8844.843835725815,
+            "median": 430.0,
+            "min": 28.0,
+            "negative_count": 0,
+            "p01": 46.0,
+            "p05": 114.0,
+            "p25": 114.0,
+            "p75": 1418.0,
+            "p95": 13662.0,
+            "p99": 74125.40000000037,
+            "std": 174765.64430947448,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 39121,
+              "value": "114"
+            },
+            {
+              "count": 23484,
+              "value": "200"
+            },
+            {
+              "count": 4989,
+              "value": "146"
+            },
+            {
+              "count": 3578,
+              "value": "168"
+            },
+            {
+              "count": 3530,
+              "value": "564"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "service": {
+          "blank_like_token_count": 0,
+          "distinct_count": 13,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "top_values": [
+            {
+              "count": 94168,
+              "value": "-"
+            },
+            {
+              "count": 47294,
+              "value": "dns"
+            },
+            {
+              "count": 18724,
+              "value": "http"
+            },
+            {
+              "count": 5058,
+              "value": "smtp"
+            },
+            {
+              "count": 3995,
+              "value": "ftp-data"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "sinpkt": {
+          "blank_like_token_count": 0,
+          "distinct_count": 76161,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 84371.496,
+            "mean": 985.9768636758545,
+            "median": 0.279733,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.001,
+            "p05": 0.003,
+            "p25": 0.008,
+            "p75": 55.156896,
+            "p95": 245.212857,
+            "p99": 60000.656,
+            "std": 7242.245840957421,
+            "zero_count": 601
+          },
+          "top_values": [
+            {
+              "count": 26173,
+              "value": "0.009"
+            },
+            {
+              "count": 12030,
+              "value": "0.003"
+            },
+            {
+              "count": 11857,
+              "value": "0.008"
+            },
+            {
+              "count": 7037,
+              "value": "0.005"
+            },
+            {
+              "count": 5181,
+              "value": "0.004"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "sjit": {
+          "blank_like_token_count": 0,
+          "distinct_count": 77532,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 1460480.016,
+            "mean": 4976.25422621193,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 2513.295019,
+            "p95": 9505.475298,
+            "p99": 28834.22948600029,
+            "std": 44965.84651918757,
+            "zero_count": 88494
+          },
+          "top_values": [
+            {
+              "count": 88494,
+              "value": "0"
+            },
+            {
+              "count": 51,
+              "value": "10.954517"
+            },
+            {
+              "count": 49,
+              "value": "10.954515"
+            },
+            {
+              "count": 48,
+              "value": "987.040687"
+            },
+            {
+              "count": 42,
+              "value": "1174.32875"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "sload": {
+          "blank_like_token_count": 0,
+          "distinct_count": 80885,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 5988000256.0,
+            "mean": 73454033.19406255,
+            "median": 879674.75,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 2358.739014,
+            "p25": 13053.33887,
+            "p75": 88888888.0,
+            "p95": 266666656.0,
+            "p99": 800000000.0,
+            "std": 188357447.00020307,
+            "zero_count": 2977
+          },
+          "top_values": [
+            {
+              "count": 11997,
+              "value": "50666664"
+            },
+            {
+              "count": 7969,
+              "value": "88888888"
+            },
+            {
+              "count": 6798,
+              "value": "152000000"
+            },
+            {
+              "count": 6386,
+              "value": "57000000"
+            },
+            {
+              "count": 3634,
+              "value": "91200000"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "sloss": {
+          "blank_like_token_count": 0,
+          "distinct_count": 409,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 4803.0,
+            "mean": 4.953000153985662,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 3.0,
+            "p95": 12.0,
+            "p99": 38.0,
+            "std": 66.00505853508564,
+            "zero_count": 95448
+          },
+          "top_values": [
+            {
+              "count": 95448,
+              "value": "0"
+            },
+            {
+              "count": 30181,
+              "value": "2"
+            },
+            {
+              "count": 14649,
+              "value": "7"
+            },
+            {
+              "count": 8293,
+              "value": "3"
+            },
+            {
+              "count": 5802,
+              "value": "4"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "smean": {
+          "blank_like_token_count": 0,
+          "distinct_count": 1357,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 1504.0,
+            "mean": 136.7517694093224,
+            "median": 73.0,
+            "min": 28.0,
+            "negative_count": 0,
+            "p01": 45.0,
+            "p05": 49.0,
+            "p25": 57.0,
+            "p75": 100.0,
+            "p95": 638.0,
+            "p99": 1137.0,
+            "std": 204.67735958881985,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 40645,
+              "value": "57"
+            },
+            {
+              "count": 23946,
+              "value": "100"
+            },
+            {
+              "count": 5488,
+              "value": "53"
+            },
+            {
+              "count": 5293,
+              "value": "56"
+            },
+            {
+              "count": 5118,
+              "value": "73"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "spkts": {
+          "blank_like_token_count": 0,
+          "distinct_count": 480,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 9616.0,
+            "mean": 20.29866374664226,
+            "median": 2.0,
+            "min": 1.0,
+            "negative_count": 0,
+            "p01": 1.0,
+            "p05": 2.0,
+            "p25": 2.0,
+            "p75": 12.0,
+            "p95": 64.0,
+            "p99": 234.0,
+            "std": 136.88759690768774,
+            "zero_count": 0
+          },
+          "top_values": [
+            {
+              "count": 85200,
+              "value": "2"
+            },
+            {
+              "count": 27200,
+              "value": "10"
+            },
+            {
+              "count": 7019,
+              "value": "12"
+            },
+            {
+              "count": 5051,
+              "value": "14"
+            },
+            {
+              "count": 4700,
+              "value": "4"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "state": {
+          "blank_like_token_count": 0,
+          "distinct_count": 9,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "top_values": [
+            {
+              "count": 82275,
+              "value": "INT"
+            },
+            {
+              "count": 77825,
+              "value": "FIN"
+            },
+            {
+              "count": 13152,
+              "value": "CON"
+            },
+            {
+              "count": 1991,
+              "value": "REQ"
+            },
+            {
+              "count": 83,
+              "value": "RST"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "stcpb": {
+          "blank_like_token_count": 0,
+          "distinct_count": 75265,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 4294958913.0,
+            "mean": 969250421.9105115,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 1916651334.0,
+            "p95": 3814196183.0,
+            "p99": 4201220698.0,
+            "std": 1355264249.263036,
+            "zero_count": 96246
+          },
+          "top_values": [
+            {
+              "count": 96246,
+              "value": "0"
+            },
+            {
+              "count": 8,
+              "value": "4125223812"
+            },
+            {
+              "count": 6,
+              "value": "4223830827"
+            },
+            {
+              "count": 6,
+              "value": "3795074471"
+            },
+            {
+              "count": 6,
+              "value": "2037155331"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "sttl": {
+          "blank_like_token_count": 0,
+          "distinct_count": 11,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 255.0,
+            "mean": 179.546996994428,
+            "median": 254.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 31.0,
+            "p25": 62.0,
+            "p75": 254.0,
+            "p95": 254.0,
+            "p99": 254.0,
+            "std": 102.94001105701696,
+            "zero_count": 3162
+          },
+          "top_values": [
+            {
+              "count": 114743,
+              "value": "254"
+            },
+            {
+              "count": 39455,
+              "value": "31"
+            },
+            {
+              "count": 17681,
+              "value": "62"
+            },
+            {
+              "count": 3162,
+              "value": "0"
+            },
+            {
+              "count": 181,
+              "value": "64"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "swin": {
+          "blank_like_token_count": 0,
+          "distinct_count": 13,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 255.0,
+            "mean": 116.25733855743951,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 255.0,
+            "p95": 255.0,
+            "p99": 255.0,
+            "std": 127.00102415612092,
+            "zero_count": 95395
+          },
+          "top_values": [
+            {
+              "count": 95395,
+              "value": "0"
+            },
+            {
+              "count": 79935,
+              "value": "255"
+            },
+            {
+              "count": 1,
+              "value": "31"
+            },
+            {
+              "count": 1,
+              "value": "232"
+            },
+            {
+              "count": 1,
+              "value": "14"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "synack": {
+          "blank_like_token_count": 0,
+          "distinct_count": 40142,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 2.100352,
+            "mean": 0.021020450476500075,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 0.023268,
+            "p95": 0.103576,
+            "p99": 0.15563480000000013,
+            "std": 0.04339978350809994,
+            "zero_count": 96300
+          },
+          "top_values": [
+            {
+              "count": 96300,
+              "value": "0"
+            },
+            {
+              "count": 280,
+              "value": "0.000541"
+            },
+            {
+              "count": 273,
+              "value": "0.000539"
+            },
+            {
+              "count": 258,
+              "value": "0.000536"
+            },
+            {
+              "count": 248,
+              "value": "0.000542"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "tcprtt": {
+          "blank_like_token_count": 0,
+          "distinct_count": 43319,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 2.518893,
+            "mean": 0.04139564435585516,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 0.065481,
+            "p95": 0.196678,
+            "p99": 0.2773218,
+            "std": 0.0793539718267979,
+            "zero_count": 96300
+          },
+          "top_values": [
+            {
+              "count": 96300,
+              "value": "0"
+            },
+            {
+              "count": 196,
+              "value": "0.000665"
+            },
+            {
+              "count": 179,
+              "value": "0.00068"
+            },
+            {
+              "count": 179,
+              "value": "0.000681"
+            },
+            {
+              "count": 178,
+              "value": "0.000664"
+            }
+          ],
+          "whitespace_only_count": 0
+        },
+        "trans_depth": {
+          "blank_like_token_count": 0,
+          "distinct_count": 11,
+          "dtype_as_read": "string",
+          "empty_count": 0,
+          "numeric": {
+            "infinite_count": 0,
+            "invalid_nonblank_count": 0,
+            "max": 172.0,
+            "mean": 0.10598205781876457,
+            "median": 0.0,
+            "min": 0.0,
+            "negative_count": 0,
+            "p01": 0.0,
+            "p05": 0.0,
+            "p25": 0.0,
+            "p75": 0.0,
+            "p95": 1.0,
+            "p99": 1.0,
+            "std": 0.7769107861776775,
+            "zero_count": 157501
+          },
+          "top_values": [
+            {
+              "count": 157501,
+              "value": "0"
+            },
+            {
+              "count": 17747,
+              "value": "1"
+            },
+            {
+              "count": 80,
+              "value": "2"
+            },
+            {
+              "count": 3,
+              "value": "4"
+            },
+            {
+              "count": 2,
+              "value": "3"
+            }
+          ],
+          "whitespace_only_count": 0
+        }
+      },
+      "columns": 45,
+      "duplicate_column_names": [],
+      "duplicate_full_rows": 0,
+      "duplicate_rows_excluding_id": 67601,
+      "empty_header_names": 0,
+      "expected_bytes": 32293018,
+      "expected_rows": 175341,
+      "expected_sha256": "BEC7DD5EC88DC2A0CCC7A07879D338395ED7421750F675FD0339E07DFE0648FA",
+      "file": "UNSW_NB15_training-set.csv",
+      "hash_matches_expected": true,
+      "id_diagnostics": {
+        "attack_rate_by_id_quantile": [
+          0.0,
+          0.0,
+          0.2675943880460819,
+          0.9544313904414281,
+          0.8609558571917417,
+          0.8763545112353143,
+          0.8469259723964868,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "max": 175341.0,
+        "min": 1.0,
+        "pearson_correlation_with_label": 0.7271729520215975,
+        "row_count": 175341,
+        "unique_count": 175341
+      },
+      "label_counts": {
+        "0": 56000,
+        "1": 119341
+      },
+      "literal_blank_like_token_count": 0,
+      "predictor_duplicate_screen": {
+        "distinct_repeated_predictor_vectors": 9748,
+        "excess_rows_after_first_predictor_vector": 74301,
+        "predictor_vectors_with_multiple_labels": 229,
+        "rows_in_predictor_vectors_with_multiple_labels": 940,
+        "rows_with_repeated_predictor_vector": 84049
+      },
+      "row_count_matches_expected": true,
+      "rows": 175341,
+      "sha256": "BEC7DD5EC88DC2A0CCC7A07879D338395ED7421750F675FD0339E07DFE0648FA",
+      "size_matches_expected": true
+    }
+  }
+}

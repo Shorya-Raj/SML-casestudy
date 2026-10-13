@@ -1,0 +1,5 @@
+Task: audit; started IST: 2026-10-14T02:27:41.4485128+05:30
+Python command: C:\Users\shory\AppData\Local\Temp\sml-revision-c2eb87323244431b94ec84c05c37ad14\deliberately-missing-python.exe
+Failure: The term 'C:\Users\shory\AppData\Local\Temp\sml-revision-c2eb87323244431b94ec84c05c37ad14\deliberately-missing-python.exe' is not recognized as a name of a cmdlet, function, script file, or executable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+Finished IST: 2026-10-14T02:27:41.5647726+05:30; status: failed
