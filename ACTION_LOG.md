@@ -435,3 +435,10 @@ Check the spelling of the name, or if a path was included, verify that the path 
 - Compared the new DOCX with its source: 102 paragraphs, 10 tables and two embedded figures remain; the references and numeric result tables are unchanged; the package is valid. No dataset, training run, or model output changed.
 - Exported the final copy through Microsoft Word and inspected all ten page images. No clipping, overlap, missing glyphs, or broken tables were observed. Temporary PDF and page images are QA files, not deliverables.
 - SHA-256 for the new DOCX: 38FEADC098FD5E9B7C13EEDEF6FBE44116DE4E139F2591DABFF6D0A16E36B44E.
+### 2026-11-02 — Centered Experiment 12 titles and added student details
+
+- Used the committed student-voice Experiment 12 DOCX as the source and saved a separate Word file named Experiment_12_UNSW_NB15_Case_Study_Report_Student_Voice_With_Details.docx. The source file was not overwritten.
+- Centered the main Experiment/Practical 12 heading and the UNSW-NB15 case-study title. The department header was already centered.
+- Inserted a centered Student Details block on the first page: Shorya Raj; PRN 25070126207; Department AIML; Division C-1. The main report sections, results, references, tables, and figures were not edited.
+- Exported the new DOCX through Microsoft Word and inspected all ten rendered pages. The details stay on page one; no clipping, overlap, or missing text was observed. The rendered PDF and images are internal layout checks.
+- Final DOCX SHA-256: 079E00503D4F4A98CD75FF7750CFBCAC49AF833C40FD8E8964C495ED134F2379.
