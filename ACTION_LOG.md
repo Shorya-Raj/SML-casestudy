@@ -456,3 +456,7 @@ Check the spelling of the name, or if a path was included, verify that the path 
 - Removed bracketed numeric citation markers from 17 body paragraphs. Kept the References heading and all nine numbered reference entries `[1]`–`[9]`. No matching inline markers were present in table cells or headers/footers.
 - Confirmed 105 paragraphs and 10 tables remain. Rendered the revised DOCX through Microsoft Word to a 10-page PDF and inspected all ten page images; the first-page student details, tables, figures, results, and references remain visible without clipping or overlap.
 - No report claims, dataset files, preprocessing, model code, or model results were changed. Final DOCX SHA-256: `3876C6A95918EB12452CC6118F29B394974AA42C27C19D3C9EE1537BED028445`.
+
+### 2026-11-02 — GitHub delivery of citation-cleaned report
+
+- Pushed the revised DOCX and its change-log entry to `origin/main` in report commit `0d5c0df0efba052b2a09a53b5244e5138cc6a7cf`; confirmed that remote `main` pointed to the same commit. That report commit contains only the new DOCX and `ACTION_LOG.md`. Other uncommitted workspace changes were not included.
