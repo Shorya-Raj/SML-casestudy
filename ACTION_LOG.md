@@ -449,3 +449,10 @@ Check the spelling of the name, or if a path was included, verify that the path 
 - Preserved the current local cover details, other paragraphs, all 10 tables, both embedded figures, references, numbers, citations, and paths. The DOCX package passed its integrity check. No model or data processing was rerun.
 - Added a page break before the conclusion after rendering showed the section split across pages nine and ten. Exported again through Word and visually checked the final 10-page layout; the conclusion now begins on page ten and no clipping or overlap was observed.
 - Final DOCX SHA-256: FFED937E2E1462A7BA1632796E7F456069CED7C1F949CBC0FA197DC88C7DAEE8.
+
+### 2026-11-02 — Removed bracketed in-text reference markers
+
+- The user showed a `[1]` marker and asked to remove similar items. Starting from the current humanized Experiment 12 report, created `Experiment_12_UNSW_NB15_Case_Study_Report_No_Inline_Citations.docx` as a separate copy; the humanized source remains unchanged.
+- Removed bracketed numeric citation markers from 17 body paragraphs. Kept the References heading and all nine numbered reference entries `[1]`–`[9]`. No matching inline markers were present in table cells or headers/footers.
+- Confirmed 105 paragraphs and 10 tables remain. Rendered the revised DOCX through Microsoft Word to a 10-page PDF and inspected all ten page images; the first-page student details, tables, figures, results, and references remain visible without clipping or overlap.
+- No report claims, dataset files, preprocessing, model code, or model results were changed. Final DOCX SHA-256: `3876C6A95918EB12452CC6118F29B394974AA42C27C19D3C9EE1537BED028445`.
