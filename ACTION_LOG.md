@@ -442,3 +442,10 @@ Check the spelling of the name, or if a path was included, verify that the path 
 - Inserted a centered Student Details block on the first page: Shorya Raj; PRN 25070126207; Department AIML; Division C-1. The main report sections, results, references, tables, and figures were not edited.
 - Exported the new DOCX through Microsoft Word and inspected all ten rendered pages. The details stay on page one; no clipping, overlap, or missing text was observed. The rendered PDF and images are internal layout checks.
 - Final DOCX SHA-256: 079E00503D4F4A98CD75FF7750CFBCAC49AF833C40FD8E8964C495ED134F2379.
+### 2026-11-02 — Humanizer pass on Experiment 12 report
+
+- Applied the user-invoked humanizer skill to the current local Experiment 12 Word report. That local DOCX had uncommitted edits since the GitHub copy, including a revised first page. Copied it for editing and left it untouched.
+- Created Experiment_12_UNSW_NB15_Case_Study_Report_Humanized.docx. Reworked 20 prose paragraphs to remove repeated staged contrasts, self-commentary, and formulaic explanation while keeping the student voice and the specific experiment claims. The literature discussion, validation, results interpretation, conclusion, and future work were the main areas revised.
+- Preserved the current local cover details, other paragraphs, all 10 tables, both embedded figures, references, numbers, citations, and paths. The DOCX package passed its integrity check. No model or data processing was rerun.
+- Added a page break before the conclusion after rendering showed the section split across pages nine and ten. Exported again through Word and visually checked the final 10-page layout; the conclusion now begins on page ten and no clipping or overlap was observed.
+- Final DOCX SHA-256: FFED937E2E1462A7BA1632796E7F456069CED7C1F949CBC0FA197DC88C7DAEE8.
